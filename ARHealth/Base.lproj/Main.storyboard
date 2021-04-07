@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ARView-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="PracticeDragonPlacement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Plw-tU-dWV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-Hl-XLa">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mapping: Limited Tracking: Initializing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dK4-mz-gmJ">
+                                <rect key="frame" x="168" y="99" width="78" height="81.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="z8d-4q-Pio"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0VD-GN-L2R">
+                                <rect key="frame" x="114.5" y="752" width="185" height="38"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fvq-eh-izP">
+                                    <rect key="frame" x="0.0" y="0.0" width="185" height="38"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initializing AR session." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0n-f9-4e0">
+                                            <rect key="frame" x="8" y="8" width="169" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="H0n-f9-4e0" secondAttribute="bottom" constant="8" id="4kF-Gz-uCD"/>
+                                        <constraint firstItem="H0n-f9-4e0" firstAttribute="leading" secondItem="Fvq-eh-izP" secondAttribute="leading" constant="8" id="RxA-Lf-Z0J"/>
+                                        <constraint firstAttribute="trailing" secondItem="H0n-f9-4e0" secondAttribute="trailing" constant="8" id="mDN-BU-BgX"/>
+                                        <constraint firstItem="H0n-f9-4e0" firstAttribute="top" secondItem="Fvq-eh-izP" secondAttribute="top" constant="8" id="xe1-Ru-wmn"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="gyv-T5-9Ph"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dK4-mz-gmJ" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="0MP-Zw-GTg"/>
+                            <constraint firstItem="0VD-GN-L2R" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="83i-a7-NWP"/>
+                            <constraint firstItem="1pf-y0-cG6" firstAttribute="bottom" secondItem="0VD-GN-L2R" secondAttribute="bottom" constant="72" id="Mwe-aK-w2y"/>
+                            <constraint firstItem="s1F-Hl-XLa" firstAttribute="leading" secondItem="1pf-y0-cG6" secondAttribute="leading" id="QVB-XI-Zmc"/>
+                            <constraint firstItem="s1F-Hl-XLa" firstAttribute="top" secondItem="Plw-tU-dWV" secondAttribute="top" id="VuX-FV-KAY"/>
+                            <constraint firstItem="s1F-Hl-XLa" firstAttribute="trailing" secondItem="1pf-y0-cG6" secondAttribute="trailing" id="lvx-ZU-6F2"/>
+                            <constraint firstAttribute="bottom" secondItem="s1F-Hl-XLa" secondAttribute="bottom" id="oeu-dm-nSQ"/>
+                            <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="r8Q-4O-3Wt"/>
+                            <constraint firstItem="dK4-mz-gmJ" firstAttribute="top" secondItem="1pf-y0-cG6" secondAttribute="top" constant="55" id="sN3-gE-cPS"/>
+                            <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="unY-Zc-K1y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1pf-y0-cG6"/>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="s1F-Hl-XLa" id="Puw-Yy-p5i"/>
+                        <outlet property="sessionInfoLabel" destination="H0n-f9-4e0" id="h7o-Xb-udF"/>
+                        <outlet property="sessionInfoView" destination="0VD-GN-L2R" id="lEK-hI-CDe"/>
+                        <outlet property="statusLabel" destination="dK4-mz-gmJ" id="v01-kv-wEe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FEr-jm-ind">
+                    <connections>
+                        <action selector="analyzeTap:" destination="BYZ-38-t0r" id="Exo-HZ-U5E"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
+        </scene>
+    </scenes>
+</document>
