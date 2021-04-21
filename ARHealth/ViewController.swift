@@ -18,6 +18,9 @@ class ViewController: UIViewController, ARSessionDelegate {
     @IBOutlet weak var sessionInfoView: UIView!
     @IBOutlet weak var sessionInfoLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var decorationModeButton: UIButton!
+    @IBOutlet weak var placeButton: UIButton!
+    @IBOutlet weak var debugLabel: UILabel!
     
     var virtualPetAnchors: [AnchorEntity] = []
     var defaultConfiguration: ARWorldTrackingConfiguration {
@@ -48,22 +51,32 @@ class ViewController: UIViewController, ARSessionDelegate {
     var useRaycast: Bool = false
     var initLock = NSLock()
     
+    var cameraTransform: simd_float4x4 = simd_float4x4.init()
+    
+    var cameraAnchor: AnchorEntity = AnchorEntity(world: SIMD3<Float>(0,0,0))
+    
+    var gardenBoundaryPoints: [SIMD3<Float>] = []
+    var gardenAnchor: Entity = AnchorEntity(world: SIMD3<Float>(0,0,0))
+    
+    
     // MARK: - View Life Cycle
     
     // Allows user to auto-rotate phone
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arView.debugOptions = [.showFeaturePoints]
-        arView.session.delegate = self
-        arView.session.run(defaultConfiguration)
+        arView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
+        self.runSession()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.view.isUserInteractionEnabled = true
+//        let tapGesture = UITapGestureRecognizer(target: self, action: Selector(("handleTap")))
+//        self.view.addGestureRecognizer(tapGesture)
         
         guard ARWorldTrackingConfiguration.isSupported else {
             fatalError("""
@@ -77,7 +90,10 @@ class ViewController: UIViewController, ARSessionDelegate {
             """) // For details, see https://developer.apple.com/documentation/arkit
         }
         
+        self.decorationModeButton.isHidden = true
+//        self.placeButton.isHidden = true
         
+//        onboardNewUser()
 //
 //        let virtualPetAnchor = ARAnchor(name: "PetAnchor", transform: float4x4(SIMD4<Float>(1, 0, 0, 0), SIMD4<Float>(0, 1, 0, 0), SIMD4<Float>(0, 0, 1, 0), SIMD4<Float>(0, -0.2, 0, 1)))
 //        arView.session.add(anchor: virtualPetAnchor)
@@ -94,19 +110,29 @@ class ViewController: UIViewController, ARSessionDelegate {
 // MARK: - Delegate functions
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
 //        initLock.lock()
+//
+//        if isInDecorationMode {
+//            switch frame.worldMappingStatus {
+//            case .mapped:
+//                self.enterMainScene()
+//            default:
+//                break
+//            }
+//        }
+//
+//        initLock.unlock()
+        
         statusLabel.text = """
         Mapping: \(frame.worldMappingStatus.description)
         Tracking: \(frame.camera.trackingState.description)
         """
         
-        switch frame.worldMappingStatus {
-        case .mapped:
-            enterMainScene()
-        default:
-            break
-        }
+        let transform = frame.camera.transform.columns.3
+        self.cameraTransform = float4x4(SIMD4<Float>(1, 0, 0, 0), SIMD4<Float>(0, 1, 0, 0), SIMD4<Float>(0, 0, 1, 0), SIMD4<Float>(transform.x, transform.y, transform.z, 1))
+        
+        let position = Transform(matrix: frame.camera.transform)
+        cameraAnchor.transform = position
     }
-    
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         switch camera.trackingState.description {
@@ -118,10 +144,6 @@ class ViewController: UIViewController, ARSessionDelegate {
                 enterMainScene()
             }
         }
-        
-//        if canPlaceDragon {
-//            initializeDragon()
-//        }
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
@@ -162,6 +184,8 @@ class ViewController: UIViewController, ARSessionDelegate {
         }
     }
     
+    // MARK: - Saving and Loading
+    
     func getSaveURL(name: String) -> URL {
         return {
             do {
@@ -177,10 +201,23 @@ class ViewController: UIViewController, ARSessionDelegate {
         }()
     }
     
+    func readSavedWorldNames() -> Array<String> {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        do {
+            let savedWorldFiles = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil).filter{ $0.pathExtension == "arexperience" }
+            return savedWorldFiles.map{ $0.deletingPathExtension().lastPathComponent }
+        } catch {
+            fatalError("Can't load saved worlds")
+        }
+    }
+    
     // MARK: - Start of Lifecycle
     
     func prepareMainScene() {
-        
+        self.worldHasBeenSaved = true
+        self.arView.debugOptions = []
+        self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
+        self.decorationModeButton.isHidden = false
     }
     
     func enterMainScene() {
@@ -188,41 +225,138 @@ class ViewController: UIViewController, ARSessionDelegate {
         self.worldHasBeenSaved = true
         self.arView.debugOptions = []
         self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-//        self.decorationModeButton.isHidden = false
+        self.decorationModeButton.isHidden = false
 //        initializeDragon()
     }
     
-     // MARK: - Dragon Placement
+    func onboardNewUser() {
+        let alert = UIAlertController(title: "Welcome to \(gameName)! Please name your world.", message:"", preferredStyle: .alert)
+        let defaultName = "DK's Forest"
+        alert.addTextField{ (textField) in textField.placeholder = defaultName}
+        alert.addAction(UIAlertAction(title:"Confirm", style: .default, handler: {[weak alert] (_) in
+            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
+            self.worldName = userText.count > 0 ? userText : defaultName
+            self.worldHasBeenSaved = false
+            self.sessionInfoLabel.text = "The world has not been saved. Move your camera around."
+            
+            self.decorationModeButton.isHidden = true
+            
+            self.runSession()
+        }))
+    }
+    
+    @IBAction func enterDecorationMode(_ sender: UIButton) {
+        isInDecorationMode = true
+    }
+    
+    func runSession() {
+        arView.session.delegate = self
+        arView.session.run(defaultConfiguration)
         
-        //Initializes the dragon placement on a horizontal plane
-        private func initializeDragon() {
-            let anchor = AnchorEntity(plane: .horizontal)
-                
-            let dragon = try! Entity.loadModel(named: "fly")
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    // MARK: - Dragon Placement
+        
+    //Initializes the dragon placement on a horizontal plane
+    private func initializeDragon() {
+        let anchor = AnchorEntity(plane: .horizontal)
             
-            anchor.addChild(dragon)
-            arView.scene.addAnchor(anchor)
-            self.virtualPetAnchors.append(anchor)
-            
-            for anim in dragon.availableAnimations {
-                dragon.playAnimation(anim.repeat(duration: .infinity))
-            }
-            
-            let camera = arView.cameraTransform.translation
-            let currPos = anchor.transform.translation
-            anchor.look(at: camera, from: currPos, relativeTo: nil)
-            
-            dragon.generateCollisionShapes(recursive: true)
+        let dragon = try! Entity.loadModel(named: "fly")
+        
+        anchor.addChild(dragon)
+        arView.scene.addAnchor(anchor)
+        self.virtualPetAnchors.append(anchor)
+        
+        for anim in dragon.availableAnimations {
+            dragon.playAnimation(anim.repeat(duration: .infinity))
         }
         
-        //Adds and moves dragon
-        @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
-            let tapLocation = sender.location(in: arView)
+        let camera = arView.cameraTransform.translation
+        let currPos = anchor.transform.translation
+        anchor.look(at: camera, from: currPos, relativeTo: nil)
+        
+        dragon.generateCollisionShapes(recursive: true)
+    }
+    
+    @IBAction func placeDecoration(_ sender: Any) {
+//        let mesh = MeshResource.generateBox(size: 0.2)
+//        let material = SimpleMaterial(color: .blue, roughness: 0.5, isMetallic: true)
+//        let modelEntity = ModelEntity(mesh: mesh, materials: [material])
+//        modelEntity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
+//        modelEntity.generateCollisionShapes(recursive: true)
+//
+//        modelEntity.transform = Transform(matrix: self.cameraTransform)
+        
+//        let box = CustomBox(color: .yellow, position: Transform(matrix: cameraTransform).translation)
+//        arView.installGestures(.all, for: box)
+//        box.generateCollisionShapes(recursive: true)
+        let box = Decoration(color: .yellow, position: Transform(matrix: self.cameraTransform).translation)
+        let model = try! Entity.self.loadModel(named: "fly")
+        for anim in model.availableAnimations {
+            model.playAnimation(anim.repeat(duration: .infinity))
+        }
+        
+        box.setPosition(SIMD3<Float>(0,0,0), relativeTo: cameraAnchor)
+        
+        box.addChild(model)
+        model.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
+        arView.installGestures(.all, for:box)
+        box.generateCollisionShapes(recursive: true)
+        
+//        let anchor = AnchorEntity(plane: .horizontal)
+//        anchor.addChild(modelEntity)
+        arView.scene.anchors.append(box)
+    }
+
+    @IBAction func placeBoundaryPoints(_ sender: Any) {
+        if gardenBoundaryPoints.count < 3 {
+            gardenBoundaryPoints.append(cameraAnchor.transform.translation)
+            let box = Decoration(color: .blue, position: Transform(matrix: self.cameraTransform).translation)
+            box.setPosition(SIMD3<Float>(0,0,0), relativeTo: cameraAnchor)
+            box.generateCollisionShapes(recursive: true)
+//            box.scale = SIMD3<Float>(0.03, 0.03, 0.03)
             
-            sessionInfoLabel.text = "Tapped"
+            if gardenBoundaryPoints.count == 0 {
+                gardenAnchor = box
+            }
             
-            placeDecor(point: tapLocation)
+            arView.scene.anchors.append(box)
+        } else {
+            let center = gardenBoundaryPoints[0]
+            let width = 2 * abs(gardenBoundaryPoints[1].x - center.x)
+            let depth = 2 * abs(gardenBoundaryPoints[2].z - center.z)
             
+            let plane = Plane(color:.green, position:center, width: width, depth: depth)
+            plane.generateCollisionShapes(recursive: true)
+            
+            debugLabel.text = "Width: \(width), Depth: \(depth)"
+            
+            arView.scene.anchors.append(plane)
+        }
+    }
+    
+    //Adds and moves dragon
+    func handleTap(_ sender: UIView) {
+//        if isInDecorationMode {
+//            let tapLocation = sender.location(in: arView)
+//
+//           placeDecor(point: tapLocation)
+//        }
+        
+        
+//        let transform = cameraAnchor.transform
+//        let planeMesh = MeshResource.generatePlane(width: 0.5, depth: 0.5)
+//        let material = SimpleMaterial(color: .blue, roughness: 0.5, isMetallic: true)
+//        let planeEntity = ModelEntity(mesh:planeMesh, materials:[material])
+//        planeEntity.generateCollisionShapes(recursive: true)
+//        let planeAnchor = AnchorEntity(world: transform.translation)
+//        planeAnchor.addChild(planeEntity)
+//
+//        arView.scene.anchors.append(planeAnchor)
+        
+        
+        
 //            guard let query = arView.makeRaycastQuery(from: tapLocation, allowing: .existingPlaneGeometry, alignment: .horizontal) else { return }
 //            guard let raycast = arView.session.raycast(query).first else { return }
 //
@@ -232,48 +366,48 @@ class ViewController: UIViewController, ARSessionDelegate {
 //            let raycastAnchor = AnchorEntity(raycastResult: raycast)
 //            arView.scene.addAnchor(raycastAnchor)
 //            movePet(transform: transform)
-        }
-    
-        // Place decoration
-        private func placeDecor(point: CGPoint) {
-            guard let query = arView.makeRaycastQuery(from: point, allowing: .existingPlaneInfinite, alignment: .horizontal) else {
-                return
-            }
-            
-            guard let result = arView.session.raycast(query).first else {
-                return
-            }
-            
-            let transform = Transform(matrix: result.worldTransform)
-            
-            let mesh = MeshResource.generateBox(size: 0.2)
-            let material = SimpleMaterial(color: .blue, roughness: 0.5, isMetallic: true)
-            let modelEntity = ModelEntity(mesh: mesh, materials: [material])
-            modelEntity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
-            modelEntity.generateCollisionShapes(recursive: true)
-            
-            modelEntity.transform = transform
-            
-            let raycastAnchor = AnchorEntity(raycastResult: result)
-            raycastAnchor.addChild(modelEntity)
-            arView.scene.addAnchor(raycastAnchor)
+    }
+
+    // Place decoration
+    private func placeDecor(point: CGPoint) {
+        guard let query = arView.makeRaycastQuery(from: point, allowing: .existingPlaneInfinite, alignment: .horizontal) else {
+            return
         }
         
-        // Moves pet to the 3d location specified by the raycast created by the tap and gets dragon to look at user once it stops moving
-        private func movePet(transform: Transform) {
-//            if virtualPetAnchors.count > 0 {
-                let anchor = virtualPetAnchors[0]
-                let camera = arView.cameraTransform.translation
-                
-                guard let dragon = anchor.children.first else { return }
-                
-                let currPos = dragon.transform.translation
-                
-                dragon.look(at: transform.translation, from: currPos, relativeTo: nil)
-                dragon.move(to: transform, relativeTo: anchor, duration: 3, timingFunction: .easeInOut)
-                dragon.look(at: camera, from: transform.translation, relativeTo: nil)
-                
-                anchor.transform.translation = transform.translation
-//            }
+        guard let result = arView.session.raycast(query).first else {
+            return
         }
+        
+        let transform = Transform(matrix: result.worldTransform)
+        
+        let mesh = MeshResource.generateBox(size: 0.2)
+        let material = SimpleMaterial(color: .blue, roughness: 0.5, isMetallic: true)
+        let modelEntity = ModelEntity(mesh: mesh, materials: [material])
+        modelEntity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
+        modelEntity.generateCollisionShapes(recursive: true)
+        
+        modelEntity.transform = transform
+        
+        let raycastAnchor = AnchorEntity(raycastResult: result)
+        raycastAnchor.addChild(modelEntity)
+        arView.scene.addAnchor(raycastAnchor)
+    }
+    
+    // Moves pet to the 3d location specified by the raycast created by the tap and gets dragon to look at user once it stops moving
+    private func movePet(transform: Transform) {
+//            if virtualPetAnchors.count > 0 {
+            let anchor = virtualPetAnchors[0]
+            let camera = arView.cameraTransform.translation
+            
+            guard let dragon = anchor.children.first else { return }
+            
+            let currPos = dragon.transform.translation
+            
+            dragon.look(at: transform.translation, from: currPos, relativeTo: nil)
+            dragon.move(to: transform, relativeTo: anchor, duration: 3, timingFunction: .easeInOut)
+            dragon.look(at: camera, from: transform.translation, relativeTo: nil)
+            
+            anchor.transform.translation = transform.translation
+//            }
+    }
 }

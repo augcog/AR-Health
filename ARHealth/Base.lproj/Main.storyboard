@@ -10,7 +10,7 @@
         <!--ARView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="PracticeDragonPlacement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Plw-tU-dWV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -57,35 +57,91 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoH-Dz-Sx7">
+                                <rect key="frame" x="107" y="433.5" width="200" height="29"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="MZh-CS-Xvj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Enter Decoration Mode">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterDecorationMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XjC-Pd-SrY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewD-NF-S4p">
+                                <rect key="frame" x="132" y="470" width="150" height="29"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="zaL-ce-ohd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Place Item">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="placeDecoration:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xZ7-Mi-YXL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGr-e4-ih9">
+                                <rect key="frame" x="131" y="549" width="152" height="29"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Place Boundary Points">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="placeBoundaryPoints:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jTO-JW-QOZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DebugLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Zm-74v">
+                                <rect key="frame" x="160.5" y="346" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dK4-mz-gmJ" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="0MP-Zw-GTg"/>
                             <constraint firstItem="0VD-GN-L2R" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="83i-a7-NWP"/>
+                            <constraint firstItem="XGr-e4-ih9" firstAttribute="top" secondItem="ewD-NF-S4p" secondAttribute="bottom" constant="50" id="MRN-bl-Bxw"/>
                             <constraint firstItem="1pf-y0-cG6" firstAttribute="bottom" secondItem="0VD-GN-L2R" secondAttribute="bottom" constant="72" id="Mwe-aK-w2y"/>
+                            <constraint firstItem="ewD-NF-S4p" firstAttribute="top" secondItem="AoH-Dz-Sx7" secondAttribute="bottom" constant="7.5" id="O82-hF-f3p"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="leading" secondItem="1pf-y0-cG6" secondAttribute="leading" id="QVB-XI-Zmc"/>
+                            <constraint firstItem="AoH-Dz-Sx7" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="S2P-Gz-LF3"/>
+                            <constraint firstItem="AoH-Dz-Sx7" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="VSq-IS-pFw"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="top" secondItem="Plw-tU-dWV" secondAttribute="top" id="VuX-FV-KAY"/>
+                            <constraint firstItem="XGr-e4-ih9" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="dMv-Tu-yKC"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="trailing" secondItem="1pf-y0-cG6" secondAttribute="trailing" id="lvx-ZU-6F2"/>
                             <constraint firstAttribute="bottom" secondItem="s1F-Hl-XLa" secondAttribute="bottom" id="oeu-dm-nSQ"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="r8Q-4O-3Wt"/>
                             <constraint firstItem="dK4-mz-gmJ" firstAttribute="top" secondItem="1pf-y0-cG6" secondAttribute="top" constant="55" id="sN3-gE-cPS"/>
+                            <constraint firstItem="u59-Zm-74v" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="ulC-qj-LES"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="unY-Zc-K1y"/>
+                            <constraint firstItem="ewD-NF-S4p" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="w1u-vg-aMY"/>
+                            <constraint firstItem="u59-Zm-74v" firstAttribute="top" secondItem="dK4-mz-gmJ" secondAttribute="bottom" constant="165.5" id="zx9-iH-QuE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1pf-y0-cG6"/>
                     </view>
                     <connections>
                         <outlet property="arView" destination="s1F-Hl-XLa" id="Puw-Yy-p5i"/>
+                        <outlet property="debugLabel" destination="u59-Zm-74v" id="a67-ag-lOt"/>
+                        <outlet property="decorationModeButton" destination="AoH-Dz-Sx7" id="UDp-C3-0Vi"/>
+                        <outlet property="placeButton" destination="ewD-NF-S4p" id="1Lf-mW-Ggs"/>
                         <outlet property="sessionInfoLabel" destination="H0n-f9-4e0" id="h7o-Xb-udF"/>
                         <outlet property="sessionInfoView" destination="0VD-GN-L2R" id="lEK-hI-CDe"/>
-                        <outlet property="statusLabel" destination="dK4-mz-gmJ" id="v01-kv-wEe"/>
+                        <outlet property="statusLabel" destination="dK4-mz-gmJ" id="l5I-kW-sHQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="FEr-jm-ind">
-                    <connections>
-                        <action selector="analyzeTap:" destination="BYZ-38-t0r" id="Exo-HZ-U5E"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
         </scene>

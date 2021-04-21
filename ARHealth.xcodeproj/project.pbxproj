@@ -11,6 +11,8 @@
 		010257E025FC25F3000251E5 /* run.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 010257DC25FC25F2000251E5 /* run.usdz */; };
 		010257E125FC25F3000251E5 /* squat version 1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 010257DD25FC25F2000251E5 /* squat version 1.usdz */; };
 		010257E225FC25F3000251E5 /* squat version 2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 010257DE25FC25F2000251E5 /* squat version 2.usdz */; };
+		0106F1F3263076E300F6036E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106F1F2263076E300F6036E /* Player.swift */; };
+		0112FBEF2630C5B800E2E823 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FBEE2630C5B800E2E823 /* Plane.swift */; };
 		01191AAE261E666B00C19B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 011F912E25E5DB1D00382FBC /* Info.plist */; };
 		01191AAF261E666D00C19B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 011F913925E5DB1D00382FBC /* Info.plist */; };
 		01191AB1261E688D00C19B55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01191AB0261E688D00C19B55 /* Default-568h@2x.png */; };
@@ -24,6 +26,8 @@
 		012999B225F88BE0001CB91B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012999B125F88BE0001CB91B /* Utilities.swift */; };
 		012999B525F88E83001CB91B /* SnapshotAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012999B325F88C19001CB91B /* SnapshotAnchor.swift */; };
 		01932B46261525A000B0F731 /* ARforHealthcareLanding.png in Resources */ = {isa = PBXBuildFile; fileRef = 01932B45261525A000B0F731 /* ARforHealthcareLanding.png */; };
+		01D355BA26277F2E006B261E /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D355B926277F2E006B261E /* CustomBox.swift */; };
+		01D355BC2627818F006B261E /* Decoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D355BB2627818F006B261E /* Decoration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,8 @@
 		010257DC25FC25F2000251E5 /* run.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = run.usdz; sourceTree = SOURCE_ROOT; };
 		010257DD25FC25F2000251E5 /* squat version 1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "squat version 1.usdz"; sourceTree = SOURCE_ROOT; };
 		010257DE25FC25F2000251E5 /* squat version 2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "squat version 2.usdz"; sourceTree = SOURCE_ROOT; };
+		0106F1F2263076E300F6036E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0112FBEE2630C5B800E2E823 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		01191AB0261E688D00C19B55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		011F911225E5DB1C00382FBC /* ARHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		011F911525E5DB1C00382FBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,8 @@
 		012999B125F88BE0001CB91B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		012999B325F88C19001CB91B /* SnapshotAnchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotAnchor.swift; sourceTree = "<group>"; };
 		01932B45261525A000B0F731 /* ARforHealthcareLanding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARforHealthcareLanding.png; sourceTree = SOURCE_ROOT; };
+		01D355B926277F2E006B261E /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
+		01D355BB2627818F006B261E /* Decoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,10 @@
 				011F911E25E5DB1D00382FBC /* Assets.xcassets */,
 				011F912025E5DB1D00382FBC /* LaunchScreen.storyboard */,
 				011F912325E5DB1D00382FBC /* Info.plist */,
+				01D355B926277F2E006B261E /* CustomBox.swift */,
+				01D355BB2627818F006B261E /* Decoration.swift */,
+				0106F1F2263076E300F6036E /* Player.swift */,
+				0112FBEE2630C5B800E2E823 /* Plane.swift */,
 			);
 			path = ARHealth;
 			sourceTree = "<group>";
@@ -290,9 +302,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D355BA26277F2E006B261E /* CustomBox.swift in Sources */,
 				011F911825E5DB1C00382FBC /* ViewController.swift in Sources */,
 				012999B525F88E83001CB91B /* SnapshotAnchor.swift in Sources */,
+				01D355BC2627818F006B261E /* Decoration.swift in Sources */,
+				0106F1F3263076E300F6036E /* Player.swift in Sources */,
 				011F911625E5DB1C00382FBC /* AppDelegate.swift in Sources */,
+				0112FBEF2630C5B800E2E823 /* Plane.swift in Sources */,
 				012999B225F88BE0001CB91B /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

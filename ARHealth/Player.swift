@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import RealityKit
+import ARKit
+
+class Player {
+    var name:String
+    var userPath: [Transform] = []
+    
+    required init() {
+        name = "John Doe"
+    }
+    
+}
