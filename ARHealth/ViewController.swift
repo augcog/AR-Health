@@ -10,6 +10,7 @@ import UIKit
 import ARKit
 import RealityKit
 import AVFoundation
+import Foundation
 
 class ViewController: UIViewController, ARSessionDelegate {
     
@@ -21,6 +22,8 @@ class ViewController: UIViewController, ARSessionDelegate {
     @IBOutlet weak var decorationModeButton: UIButton!
     @IBOutlet weak var placeButton: UIButton!
     @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var placeBoundaryButton: UIButton!
+    @IBOutlet weak var firstTutorialOverlay: UIView!
     
     var virtualPetAnchors: [AnchorEntity] = []
     var defaultConfiguration: ARWorldTrackingConfiguration {
@@ -43,7 +46,6 @@ class ViewController: UIViewController, ARSessionDelegate {
     
     var isInMovementMode: Bool = false
     
-    
     var worldHasBeenSaved: Bool = false
     var isCreatingNewWorld: Bool = false
     var isRelocalizing: Bool = false
@@ -58,6 +60,12 @@ class ViewController: UIViewController, ARSessionDelegate {
     var gardenBoundaryPoints: [SIMD3<Float>] = []
     var gardenAnchor: Entity = AnchorEntity(world: SIMD3<Float>(0,0,0))
     
+    var groundPoint: SIMD3<Float> = SIMD3<Float>(0,0,0)
+    var placementStep = 0
+    
+    var boundaryTimer = Timer()
+    
+    var originEntity: Entity = AnchorEntity(world: SIMD3<Float>(0,0,0))
     
     // MARK: - View Life Cycle
     
@@ -69,6 +77,7 @@ class ViewController: UIViewController, ARSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         arView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
+        placeBoundaryButton.setTitle("Set Ground", for: .normal)
         self.runSession()
     }
     
@@ -109,18 +118,6 @@ class ViewController: UIViewController, ARSessionDelegate {
 
 // MARK: - Delegate functions
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-//        initLock.lock()
-//
-//        if isInDecorationMode {
-//            switch frame.worldMappingStatus {
-//            case .mapped:
-//                self.enterMainScene()
-//            default:
-//                break
-//            }
-//        }
-//
-//        initLock.unlock()
         
         statusLabel.text = """
         Mapping: \(frame.worldMappingStatus.description)
@@ -132,6 +129,11 @@ class ViewController: UIViewController, ARSessionDelegate {
         
         let position = Transform(matrix: frame.camera.transform)
         cameraAnchor.transform = position
+        
+        debugLabel.text="""
+        y: \(round(cameraAnchor.transform.translation.y*100)/100.0)
+        z: \(round(cameraAnchor.transform.translation.z*100)/100.0)
+        """
     }
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
@@ -211,51 +213,6 @@ class ViewController: UIViewController, ARSessionDelegate {
         }
     }
     
-    // MARK: - Start of Lifecycle
-    
-    func prepareMainScene() {
-        self.worldHasBeenSaved = true
-        self.arView.debugOptions = []
-        self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-        self.decorationModeButton.isHidden = false
-    }
-    
-    func enterMainScene() {
-        canPlaceDragon = true
-        self.worldHasBeenSaved = true
-        self.arView.debugOptions = []
-        self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-        self.decorationModeButton.isHidden = false
-//        initializeDragon()
-    }
-    
-    func onboardNewUser() {
-        let alert = UIAlertController(title: "Welcome to \(gameName)! Please name your world.", message:"", preferredStyle: .alert)
-        let defaultName = "DK's Forest"
-        alert.addTextField{ (textField) in textField.placeholder = defaultName}
-        alert.addAction(UIAlertAction(title:"Confirm", style: .default, handler: {[weak alert] (_) in
-            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
-            self.worldName = userText.count > 0 ? userText : defaultName
-            self.worldHasBeenSaved = false
-            self.sessionInfoLabel.text = "The world has not been saved. Move your camera around."
-            
-            self.decorationModeButton.isHidden = true
-            
-            self.runSession()
-        }))
-    }
-    
-    @IBAction func enterDecorationMode(_ sender: UIButton) {
-        isInDecorationMode = true
-    }
-    
-    func runSession() {
-        arView.session.delegate = self
-        arView.session.run(defaultConfiguration)
-        
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
     // MARK: - Dragon Placement
         
     //Initializes the dragon placement on a horizontal plane
@@ -310,30 +267,37 @@ class ViewController: UIViewController, ARSessionDelegate {
     }
 
     @IBAction func placeBoundaryPoints(_ sender: Any) {
-        if gardenBoundaryPoints.count < 3 {
-            gardenBoundaryPoints.append(cameraAnchor.transform.translation)
-            let box = Decoration(color: .blue, position: Transform(matrix: self.cameraTransform).translation)
-            box.setPosition(SIMD3<Float>(0,0,0), relativeTo: cameraAnchor)
-            box.generateCollisionShapes(recursive: true)
-//            box.scale = SIMD3<Float>(0.03, 0.03, 0.03)
-            
-            if gardenBoundaryPoints.count == 0 {
-                gardenAnchor = box
-            }
-            
-            arView.scene.anchors.append(box)
-        } else {
-            let center = gardenBoundaryPoints[0]
-            let width = 2 * abs(gardenBoundaryPoints[1].x - center.x)
-            let depth = 2 * abs(gardenBoundaryPoints[2].z - center.z)
-            
-            let plane = Plane(color:.green, position:center, width: width, depth: depth)
-            plane.generateCollisionShapes(recursive: true)
-            
-            debugLabel.text = "Width: \(width), Depth: \(depth)"
-            
-            arView.scene.anchors.append(plane)
+        switch (placementStep) {
+        case 0:
+            groundPoint = cameraAnchor.transform.translation
+            placeBoundaryButton.setTitle("Start setting boundary", for: .normal)
+            placementStep += 1
+            break;
+        case 1:
+            placeBoundaryButton.setTitle("Stop setting boundary", for: .normal)
+            placementStep += 1
+            boundaryTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.putBoundaryPoints), userInfo: nil, repeats: true)
+            break;
+        default:
+            boundaryTimer.invalidate()
+            placeBoundaryButton.setTitle("Reset boundary", for: .normal)
+            placementStep = 0
+            break;
         }
+    }
+    
+    @objc func putBoundaryPoints() {
+        gardenBoundaryPoints.append(cameraAnchor.transform.translation)
+        let box = Decoration(color: .blue, position: Transform(matrix: self.cameraTransform).translation)
+//    box.setPosition(SIMD3<Float>(cameraAnchor.transform.translation.x,cameraAnchor.transform.translation.z,groundPoint.y), relativeTo: originEntity)
+        box.setPosition(SIMD3<Float>(0,-0.8,0), relativeTo: cameraAnchor)
+    box.position.y=groundPoint.y
+//        box.position = SIMD3<Float>(cameraAnchor.transform.translation.x,cameraAnchor.transform.translation.z,-groundPoint.y)
+        box.generateCollisionShapes(recursive: true)
+//        box.scale = SIMD3<Float>(0.03, 0.03, 0.03)
+        
+        gardenAnchor = box
+        arView.scene.anchors.append(box)
     }
     
     //Adds and moves dragon
@@ -368,7 +332,7 @@ class ViewController: UIViewController, ARSessionDelegate {
 //            movePet(transform: transform)
     }
 
-    // Place decoration
+    /** Place decoration */
     private func placeDecor(point: CGPoint) {
         guard let query = arView.makeRaycastQuery(from: point, allowing: .existingPlaneInfinite, alignment: .horizontal) else {
             return
@@ -393,7 +357,9 @@ class ViewController: UIViewController, ARSessionDelegate {
         arView.scene.addAnchor(raycastAnchor)
     }
     
-    // Moves pet to the 3d location specified by the raycast created by the tap and gets dragon to look at user once it stops moving
+    /**
+     Moves pet to the 3d location specified by the raycast created by the tap and gets dragon to look at user once it stops moving
+    */
     private func movePet(transform: Transform) {
 //            if virtualPetAnchors.count > 0 {
             let anchor = virtualPetAnchors[0]
@@ -409,5 +375,50 @@ class ViewController: UIViewController, ARSessionDelegate {
             
             anchor.transform.translation = transform.translation
 //            }
+    }
+}
+
+// MARK: - Start of Lifecycle
+extension ViewController {
+    func prepareMainScene() {
+        self.worldHasBeenSaved = true
+        self.arView.debugOptions = []
+        self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
+        self.decorationModeButton.isHidden = false
+    }
+    
+    func enterMainScene() {
+        canPlaceDragon = true
+        self.worldHasBeenSaved = true
+        self.arView.debugOptions = []
+        self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
+        self.decorationModeButton.isHidden = false
+    }
+    
+    func onboardNewUser() {
+        let alert = UIAlertController(title: "Welcome to \(gameName)! Please name your world.", message:"", preferredStyle: .alert)
+        let defaultName = "DK's Forest"
+        alert.addTextField{ (textField) in textField.placeholder = defaultName}
+        alert.addAction(UIAlertAction(title:"Confirm", style: .default, handler: {[weak alert] (_) in
+            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
+            self.worldName = userText.count > 0 ? userText : defaultName
+            self.worldHasBeenSaved = false
+            self.sessionInfoLabel.text = "The world has not been saved. Move your camera around."
+            
+            self.decorationModeButton.isHidden = true
+            
+            self.runSession()
+        }))
+    }
+    
+    @IBAction func enterDecorationMode(_ sender: UIButton) {
+        isInDecorationMode = true
+    }
+    
+    func runSession() {
+        arView.session.delegate = self
+        arView.session.run(defaultConfiguration)
+        
+        UIApplication.shared.isIdleTimerDisabled = true
     }
 }

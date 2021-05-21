@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rjn-MD-fin">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--ARView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Plw-tU-dWV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,11 +66,8 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoH-Dz-Sx7">
-                                <rect key="frame" x="107" y="433.5" width="200" height="29"/>
+                                <rect key="frame" x="129" y="433.5" width="156" height="29"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="MZh-CS-Xvj"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Enter Decoration Mode">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,24 +106,38 @@
                                     <action selector="placeBoundaryPoints:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jTO-JW-QOZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DebugLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Zm-74v">
-                                <rect key="frame" x="160.5" y="346" width="93" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DebugLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Zm-74v">
+                                <rect key="frame" x="157" y="346" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9fs-V6-ziA"/>
+                                    <constraint firstAttribute="width" constant="100" id="oPl-rz-0ZZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISa-k8-MaC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="WxO-Eq-uRl" kind="embed" id="0Bt-a4-ZnO"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dK4-mz-gmJ" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="0MP-Zw-GTg"/>
                             <constraint firstItem="0VD-GN-L2R" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="83i-a7-NWP"/>
+                            <constraint firstItem="ISa-k8-MaC" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="IR8-Iq-Tzf"/>
                             <constraint firstItem="XGr-e4-ih9" firstAttribute="top" secondItem="ewD-NF-S4p" secondAttribute="bottom" constant="50" id="MRN-bl-Bxw"/>
                             <constraint firstItem="1pf-y0-cG6" firstAttribute="bottom" secondItem="0VD-GN-L2R" secondAttribute="bottom" constant="72" id="Mwe-aK-w2y"/>
                             <constraint firstItem="ewD-NF-S4p" firstAttribute="top" secondItem="AoH-Dz-Sx7" secondAttribute="bottom" constant="7.5" id="O82-hF-f3p"/>
+                            <constraint firstItem="ISa-k8-MaC" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="OgW-GZ-uGa"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="leading" secondItem="1pf-y0-cG6" secondAttribute="leading" id="QVB-XI-Zmc"/>
+                            <constraint firstItem="1pf-y0-cG6" firstAttribute="trailing" secondItem="ISa-k8-MaC" secondAttribute="trailing" id="Rbv-HW-0Q8"/>
                             <constraint firstItem="AoH-Dz-Sx7" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="S2P-Gz-LF3"/>
                             <constraint firstItem="AoH-Dz-Sx7" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="VSq-IS-pFw"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="top" secondItem="Plw-tU-dWV" secondAttribute="top" id="VuX-FV-KAY"/>
+                            <constraint firstItem="ISa-k8-MaC" firstAttribute="top" secondItem="dK4-mz-gmJ" secondAttribute="bottom" constant="-180.5" id="bO2-Dt-D92"/>
                             <constraint firstItem="XGr-e4-ih9" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="dMv-Tu-yKC"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="trailing" secondItem="1pf-y0-cG6" secondAttribute="trailing" id="lvx-ZU-6F2"/>
                             <constraint firstAttribute="bottom" secondItem="s1F-Hl-XLa" secondAttribute="bottom" id="oeu-dm-nSQ"/>
@@ -135,6 +154,8 @@
                         <outlet property="arView" destination="s1F-Hl-XLa" id="Puw-Yy-p5i"/>
                         <outlet property="debugLabel" destination="u59-Zm-74v" id="a67-ag-lOt"/>
                         <outlet property="decorationModeButton" destination="AoH-Dz-Sx7" id="UDp-C3-0Vi"/>
+                        <outlet property="firstTutorialOverlay" destination="ISa-k8-MaC" id="LGL-6O-b85"/>
+                        <outlet property="placeBoundaryButton" destination="XGr-e4-ih9" id="cnW-Hn-PXn"/>
                         <outlet property="placeButton" destination="ewD-NF-S4p" id="1Lf-mW-Ggs"/>
                         <outlet property="sessionInfoLabel" destination="H0n-f9-4e0" id="h7o-Xb-udF"/>
                         <outlet property="sessionInfoView" destination="0VD-GN-L2R" id="lEK-hI-CDe"/>
@@ -143,7 +164,145 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="133.92857142857142"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="SDp-CW-w3R">
+            <objects>
+                <viewController storyboardIdentifier="homeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CFi-iT-JvN" customClass="HomeViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ySJ-Wn-Oj4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arhealthlandingbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="40S-o6-dEs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYB-NN-sjG">
+                                <rect key="frame" x="99.5" y="516" width="215" height="42"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR Health" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqX-jH-yR7">
+                                <rect key="frame" x="77" y="559" width="260" height="60"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="49"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdN-SS-MTx">
+                                <rect key="frame" x="132" y="658" width="150" height="50"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jwa-jH-n1t"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="q4u-XN-Rlh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signIn:" destination="CFi-iT-JvN" eventType="touchUpInside" id="pWC-tz-fwj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.56078431370000004" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OYB-NN-sjG" firstAttribute="centerX" secondItem="ySJ-Wn-Oj4" secondAttribute="centerX" id="04S-py-9qB"/>
+                            <constraint firstItem="BdN-SS-MTx" firstAttribute="top" secondItem="iqX-jH-yR7" secondAttribute="bottom" constant="39" id="5FG-B4-myz"/>
+                            <constraint firstItem="BdN-SS-MTx" firstAttribute="centerX" secondItem="ySJ-Wn-Oj4" secondAttribute="centerX" id="AR0-Hy-uGf"/>
+                            <constraint firstItem="40S-o6-dEs" firstAttribute="centerY" secondItem="ySJ-Wn-Oj4" secondAttribute="centerY" constant="-79" id="Amd-2h-2SU"/>
+                            <constraint firstItem="40S-o6-dEs" firstAttribute="trailing" secondItem="WuZ-8U-b4E" secondAttribute="trailing" id="Fq7-HN-y3Z"/>
+                            <constraint firstItem="40S-o6-dEs" firstAttribute="centerX" secondItem="ySJ-Wn-Oj4" secondAttribute="centerX" id="Jqa-Zm-kDn"/>
+                            <constraint firstItem="40S-o6-dEs" firstAttribute="top" secondItem="WuZ-8U-b4E" secondAttribute="top" id="VPj-qN-fy3"/>
+                            <constraint firstItem="iqX-jH-yR7" firstAttribute="top" secondItem="OYB-NN-sjG" secondAttribute="bottom" constant="1" id="piN-iC-TrP"/>
+                            <constraint firstItem="iqX-jH-yR7" firstAttribute="centerX" secondItem="ySJ-Wn-Oj4" secondAttribute="centerX" id="qMP-yU-jjK"/>
+                            <constraint firstItem="WuZ-8U-b4E" firstAttribute="bottom" secondItem="OYB-NN-sjG" secondAttribute="bottom" constant="216" id="yUK-80-jej"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WuZ-8U-b4E"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pL8-iY-H7N"/>
+                    <connections>
+                        <outlet property="signInButton" destination="BdN-SS-MTx" id="BIq-FA-p9g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uDh-Ec-TEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44.927536231884062" y="133.92857142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OF3-hT-OGI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rjn-MD-fin" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9Nc-N6-GtK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CFi-iT-JvN" kind="relationship" relationship="rootViewController" id="3aU-0X-4sk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W0S-RK-3pO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-865.21739130434787" y="133.92857142857142"/>
+        </scene>
+        <!--First Tutorial View Controller-->
+        <scene sceneID="9pS-Z2-X1P">
+            <objects>
+                <viewController storyboardIdentifier="firstTutorialVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WxO-Eq-uRl" customClass="FirstTutorialViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VmH-w7-vyd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJX-fD-2UJ">
+                                <rect key="frame" x="167" y="612" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Ujb-kD-WEn"/>
+                                    <constraint firstAttribute="width" constant="80" id="XMZ-Fp-2iJ"/>
+                                </constraints>
+                                <state key="normal" image="CheckButton.png"/>
+                                <connections>
+                                    <action selector="closeFirstTutorialOverlay:" destination="WxO-Eq-uRl" eventType="touchUpInside" id="xGz-ha-YBS"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vr-20-512 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="egn-zj-hsK">
+                                <rect key="frame" x="85.5" y="254" width="243" height="142"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="18C-s8-10D"/>
+                                    <constraint firstAttribute="height" constant="142" id="Tgz-Zh-I2I"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Move your device to a find an AR surface" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzz-Fh-sxM">
+                                <rect key="frame" x="48.5" y="365" width="317" height="194"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="194" id="GDU-EW-mBW"/>
+                                    <constraint firstAttribute="width" constant="317" id="m1c-Jg-vo4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="eJX-fD-2UJ" secondAttribute="bottom" constant="170" id="9mA-X3-YZH"/>
+                            <constraint firstItem="bzz-Fh-sxM" firstAttribute="top" secondItem="VmH-w7-vyd" secondAttribute="topMargin" constant="321" id="GM9-o1-E3r"/>
+                            <constraint firstItem="eJX-fD-2UJ" firstAttribute="centerX" secondItem="VmH-w7-vyd" secondAttribute="centerX" id="IWG-Td-RyC"/>
+                            <constraint firstItem="egn-zj-hsK" firstAttribute="top" secondItem="VmH-w7-vyd" secondAttribute="topMargin" constant="210" id="R1u-Uh-zuk"/>
+                            <constraint firstItem="egn-zj-hsK" firstAttribute="centerX" secondItem="VmH-w7-vyd" secondAttribute="centerX" id="nZN-Bg-gbj"/>
+                            <constraint firstItem="bzz-Fh-sxM" firstAttribute="centerX" secondItem="VmH-w7-vyd" secondAttribute="centerX" id="vQM-uI-wq5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DA7-wj-Ug6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092.753623188406" y="951.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CheckButton.png" width="145" height="145"/>
+        <image name="arhealthlandingbg.png" width="414" height="1039"/>
+        <image name="vr-20-512 1.png" width="243" height="212"/>
+    </resources>
 </document>

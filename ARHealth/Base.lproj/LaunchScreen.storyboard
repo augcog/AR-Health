@@ -15,19 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ARforHealthcareLanding.png" translatesAutoresizingMaskIntoConstraints="NO" id="OQl-uH-ncR">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.9494376779" green="0.54543405769999997" blue="0.17088127140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arhealthlandingbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="IvG-68-aPb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="808"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.56078431370000004" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OQl-uH-ncR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ayf-iI-lIF"/>
-                            <constraint firstItem="OQl-uH-ncR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CTz-Zs-z4z"/>
-                            <constraint firstItem="OQl-uH-ncR" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Z2G-Z3-Bz3"/>
-                            <constraint firstItem="OQl-uH-ncR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="g8s-fk-XNC"/>
-                            <constraint firstItem="OQl-uH-ncR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="l2R-d0-y06"/>
-                            <constraint firstAttribute="bottom" secondItem="OQl-uH-ncR" secondAttribute="bottom" id="xed-tx-haU"/>
+                            <constraint firstItem="IvG-68-aPb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5Pk-u6-yj9"/>
+                            <constraint firstItem="IvG-68-aPb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Lfi-QR-Gnk"/>
+                            <constraint firstItem="IvG-68-aPb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aPG-4h-GDT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IvG-68-aPb" secondAttribute="trailing" id="mym-1K-epw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ARforHealthcareLanding.png" width="1366" height="1024"/>
+        <image name="arhealthlandingbg.png" width="414" height="1039"/>
     </resources>
 </document>
