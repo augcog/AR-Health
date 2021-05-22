@@ -26,6 +26,12 @@
                             <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-Hl-XLa">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISa-k8-MaC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="WxO-Eq-uRl" kind="embed" id="0Bt-a4-ZnO"/>
+                                </connections>
+                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mapping: Limited Tracking: Initializing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dK4-mz-gmJ">
                                 <rect key="frame" x="168" y="99" width="78" height="81.5"/>
                                 <constraints>
@@ -116,12 +122,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISa-k8-MaC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <connections>
-                                    <segue destination="WxO-Eq-uRl" kind="embed" id="0Bt-a4-ZnO"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -132,6 +132,7 @@
                             <constraint firstItem="1pf-y0-cG6" firstAttribute="bottom" secondItem="0VD-GN-L2R" secondAttribute="bottom" constant="72" id="Mwe-aK-w2y"/>
                             <constraint firstItem="ewD-NF-S4p" firstAttribute="top" secondItem="AoH-Dz-Sx7" secondAttribute="bottom" constant="7.5" id="O82-hF-f3p"/>
                             <constraint firstItem="ISa-k8-MaC" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="OgW-GZ-uGa"/>
+                            <constraint firstAttribute="bottom" secondItem="ISa-k8-MaC" secondAttribute="bottom" id="Ps0-2x-kX9"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="leading" secondItem="1pf-y0-cG6" secondAttribute="leading" id="QVB-XI-Zmc"/>
                             <constraint firstItem="1pf-y0-cG6" firstAttribute="trailing" secondItem="ISa-k8-MaC" secondAttribute="trailing" id="Rbv-HW-0Q8"/>
                             <constraint firstItem="AoH-Dz-Sx7" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="S2P-Gz-LF3"/>
@@ -143,6 +144,7 @@
                             <constraint firstAttribute="bottom" secondItem="s1F-Hl-XLa" secondAttribute="bottom" id="oeu-dm-nSQ"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="r8Q-4O-3Wt"/>
                             <constraint firstItem="dK4-mz-gmJ" firstAttribute="top" secondItem="1pf-y0-cG6" secondAttribute="top" constant="55" id="sN3-gE-cPS"/>
+                            <constraint firstItem="ISa-k8-MaC" firstAttribute="trailing" secondItem="1pf-y0-cG6" secondAttribute="trailing" id="sng-DT-5tE"/>
                             <constraint firstItem="u59-Zm-74v" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="ulC-qj-LES"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="unY-Zc-K1y"/>
                             <constraint firstItem="ewD-NF-S4p" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="w1u-vg-aMY"/>
@@ -293,6 +295,7 @@
                             <constraint firstItem="egn-zj-hsK" firstAttribute="centerX" secondItem="VmH-w7-vyd" secondAttribute="centerX" id="nZN-Bg-gbj"/>
                             <constraint firstItem="bzz-Fh-sxM" firstAttribute="centerX" secondItem="VmH-w7-vyd" secondAttribute="centerX" id="vQM-uI-wq5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dMD-mW-vS9"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DA7-wj-Ug6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

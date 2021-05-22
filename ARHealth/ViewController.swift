@@ -13,7 +13,7 @@ import AVFoundation
 import Foundation
 
 class ViewController: UIViewController, ARSessionDelegate {
-    
+    // MARK: - UI Elements
     @IBOutlet var arView: ARView!
     
     @IBOutlet weak var sessionInfoView: UIView!
@@ -23,7 +23,9 @@ class ViewController: UIViewController, ARSessionDelegate {
     @IBOutlet weak var placeButton: UIButton!
     @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var placeBoundaryButton: UIButton!
-    @IBOutlet weak var firstTutorialOverlay: UIView!
+//    @IBOutlet weak var firstTutorialOverlay: UIView!
+    
+    var firstTutorialOverlay = UIView()
     
     var virtualPetAnchors: [AnchorEntity] = []
     var defaultConfiguration: ARWorldTrackingConfiguration {
@@ -33,38 +35,35 @@ class ViewController: UIViewController, ARSessionDelegate {
         return configuration
     }
     
+    // MARK: - Save & Load Variables
     var worldName: String = ""
     var gameName: String = "dragon-game"
     var saveFileExtension: String = ".arexperience"
-    
-    var canPlaceDragon: Bool = false
+    var initLock = NSLock()
     
     var currentObjectIndex: Int = 0
     
+    // MARK: - State Variables
     var isInDecorationMode: Bool = false
     var isInitializingDragon: Bool = false
-    
     var isInMovementMode: Bool = false
-    
     var worldHasBeenSaved: Bool = false
     var isCreatingNewWorld: Bool = false
     var isRelocalizing: Bool = false
     var worldHasLoaded: Bool = false
     var useRaycast: Bool = false
-    var initLock = NSLock()
+    var canPlaceDragon: Bool = false
     
+    // MARK: - Camera Variables
     var cameraTransform: simd_float4x4 = simd_float4x4.init()
-    
     var cameraAnchor: AnchorEntity = AnchorEntity(world: SIMD3<Float>(0,0,0))
     
+    // MARK: - Garden Variables
     var gardenBoundaryPoints: [SIMD3<Float>] = []
     var gardenAnchor: Entity = AnchorEntity(world: SIMD3<Float>(0,0,0))
-    
     var groundPoint: SIMD3<Float> = SIMD3<Float>(0,0,0)
     var placementStep = 0
-    
     var boundaryTimer = Timer()
-    
     var originEntity: Entity = AnchorEntity(world: SIMD3<Float>(0,0,0))
     
     // MARK: - View Life Cycle
@@ -74,9 +73,14 @@ class ViewController: UIViewController, ARSessionDelegate {
         return false
     }
     
+    // View is loaded into memory
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareMainScene()
         arView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
+        
+        createFirstTutorialOverlay()
+        
         placeBoundaryButton.setTitle("Set Ground", for: .normal)
         self.runSession()
     }
@@ -99,21 +103,73 @@ class ViewController: UIViewController, ARSessionDelegate {
             """) // For details, see https://developer.apple.com/documentation/arkit
         }
         
-        self.decorationModeButton.isHidden = true
-//        self.placeButton.isHidden = true
+//        self.decorationModeButton.isHidden = true
         
-//        onboardNewUser()
-//
-//        let virtualPetAnchor = ARAnchor(name: "PetAnchor", transform: float4x4(SIMD4<Float>(1, 0, 0, 0), SIMD4<Float>(0, 1, 0, 0), SIMD4<Float>(0, 0, 1, 0), SIMD4<Float>(0, -0.2, 0, 1)))
-//        arView.session.add(anchor: virtualPetAnchor)
-        
-//        initializeDragon()
+        let isOverlayClosed = firstTutorialOverlay.isHidden
+        placeButton.isHidden = !isOverlayClosed
+        placeBoundaryButton.isHidden = !isOverlayClosed
+        debugLabel.isHidden = !isOverlayClosed
+        sessionInfoView.isHidden = !isOverlayClosed
+        statusLabel.isHidden = !isOverlayClosed
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         arView.session.pause()
+    }
+    
+    func createFirstTutorialOverlay() {
+        let desc = UILabel()
+        let icon = UIImageView()
+        let closeOverlayBtn = UIButton()
+        
+        // View
+//        firstTutorialOverlay.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        firstTutorialOverlay.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//
+//        firstTutorialOverlay.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        firstTutorialOverlay.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//        firstTutorialOverlay.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+//        firstTutorialOverlay.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//
+//        let bgColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) as! CGColor
+//        firstTutorialOverlay.layer.backgroundColor = bgColor
+        
+        
+        // Description
+        desc.text = "Move your device to a find an AR surface"
+        desc.numberOfLines = 3
+        desc.font = UIFont(name: "Montserrat Bold", size: 26)
+//        desc.widthAnchor.constraint(equalToConstant: 317).isActive = true
+//        desc.heightAnchor.constraint(equalToConstant: 194).isActive = true
+//        desc.topAnchor.constraint(equalTo: firstTutorialOverlay.topAnchor, constant: 321).isActive = true
+//        desc.centerXAnchor.constraint(equalTo: firstTutorialOverlay.centerXAnchor).isActive = true
+//
+//        // Icon
+//        icon.image = UIImage(named: "vr-20-512 1.png")
+//        icon.widthAnchor.constraint(equalToConstant: 243).isActive = true
+//        icon.heightAnchor.constraint(equalToConstant: 142).isActive = true
+//        icon.centerXAnchor.constraint(equalTo: firstTutorialOverlay.centerXAnchor).isActive = true
+//
+//        // Button
+//        let btnImage = UIImage(named: "CheckButton.png")
+//        closeOverlayBtn.setImage(btnImage, for: .normal)
+//        closeOverlayBtn.widthAnchor.constraint(equalToConstant: 80).isActive = true
+//        closeOverlayBtn.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//        closeOverlayBtn.centerXAnchor.constraint(equalTo: firstTutorialOverlay.centerXAnchor).isActive = true
+//        closeOverlayBtn.addTarget(self, action: #selector(closeOverlay(_:)), for: .touchUpInside)
+        
+//        firstTutorialOverlay.addSubview(desc)
+//        firstTutorialOverlay.addSubview(icon)
+//        firstTutorialOverlay.addSubview(closeOverlayBtn)
+        
+        view.addSubview(firstTutorialOverlay)
+    }
+    
+    @IBAction func closeOverlay(_ sender: UIButton) {
+        firstTutorialOverlay.isHidden = true
+        enterMainScene()
     }
 
 // MARK: - Delegate functions
@@ -134,6 +190,10 @@ class ViewController: UIViewController, ARSessionDelegate {
         y: \(round(cameraAnchor.transform.translation.y*100)/100.0)
         z: \(round(cameraAnchor.transform.translation.z*100)/100.0)
         """
+        
+        if firstTutorialOverlay.isHidden {
+            enterMainScene()
+        }
     }
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
@@ -145,6 +205,10 @@ class ViewController: UIViewController, ARSessionDelegate {
                 self.worldHasLoaded = true
                 enterMainScene()
             }
+        }
+        
+        if firstTutorialOverlay.isHidden {
+            enterMainScene()
         }
     }
     
@@ -384,7 +448,13 @@ extension ViewController {
         self.worldHasBeenSaved = true
         self.arView.debugOptions = []
         self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-        self.decorationModeButton.isHidden = false
+        self.decorationModeButton.isHidden = true
+        
+        placeButton.isHidden = true
+        placeBoundaryButton.isHidden = true
+        debugLabel.isHidden = true
+        sessionInfoView.isHidden = true
+        statusLabel.isHidden = true
     }
     
     func enterMainScene() {
@@ -392,7 +462,13 @@ extension ViewController {
         self.worldHasBeenSaved = true
         self.arView.debugOptions = []
         self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-        self.decorationModeButton.isHidden = false
+        self.decorationModeButton.isHidden = true
+        
+        placeButton.isHidden = false
+        placeBoundaryButton.isHidden = false
+        debugLabel.isHidden = true
+        sessionInfoView.isHidden = false
+        statusLabel.isHidden = false
     }
     
     func onboardNewUser() {
