@@ -11,7 +11,6 @@
 		010257E025FC25F3000251E5 /* run.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 010257DC25FC25F2000251E5 /* run.usdz */; };
 		010257E125FC25F3000251E5 /* squat version 1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 010257DD25FC25F2000251E5 /* squat version 1.usdz */; };
 		010257E225FC25F3000251E5 /* squat version 2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 010257DE25FC25F2000251E5 /* squat version 2.usdz */; };
-		0106F1F3263076E300F6036E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106F1F2263076E300F6036E /* Player.swift */; };
 		0112FBEF2630C5B800E2E823 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FBEE2630C5B800E2E823 /* Plane.swift */; };
 		01191AAE261E666B00C19B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 011F912E25E5DB1D00382FBC /* Info.plist */; };
 		01191AAF261E666D00C19B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 011F913925E5DB1D00382FBC /* Info.plist */; };
@@ -39,7 +38,6 @@
 		01651BE7265720E500FDA340 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BD4265720E500FDA340 /* Montserrat-SemiBold.ttf */; };
 		01651BE8265720E500FDA340 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BD5265720E500FDA340 /* Montserrat-ExtraLightItalic.ttf */; };
 		01651BE9265720E500FDA340 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BD6265720E500FDA340 /* Montserrat-ExtraBold.ttf */; };
-		01651BEA265720E500FDA340 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 01651BD7265720E500FDA340 /* OFL.txt */; };
 		01651BEB265720E500FDA340 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BD8265720E500FDA340 /* Montserrat-Black.ttf */; };
 		01651BEC265720E500FDA340 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BD9265720E500FDA340 /* Montserrat-Regular.ttf */; };
 		01651BED265720E500FDA340 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BDA265720E500FDA340 /* Montserrat-Italic.ttf */; };
@@ -61,8 +59,51 @@
 		01651C0E2657315800FDA340 /* vr-20-512 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 01651C0B2657315800FDA340 /* vr-20-512 1.png */; };
 		01651C0F2657315800FDA340 /* DragonLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01651C0C2657315800FDA340 /* DragonLogo.png */; };
 		01651C102657315800FDA340 /* CheckButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 01651C0D2657315800FDA340 /* CheckButton.png */; };
-		01651C122657361600FDA340 /* OverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01651C112657361600FDA340 /* OverlayController.swift */; };
-		01932B46261525A000B0F731 /* ARforHealthcareLanding.png in Resources */ = {isa = PBXBuildFile; fileRef = 01932B45261525A000B0F731 /* ARforHealthcareLanding.png */; };
+		01651C122657361600FDA340 /* OverlayControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01651C112657361600FDA340 /* OverlayControllers.swift */; };
+		017FE6012671943200963042 /* Saira-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5F72671943200963042 /* Saira-Medium.ttf */; };
+		017FE6022671943200963042 /* Saira-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5F82671943200963042 /* Saira-Light.ttf */; };
+		017FE6032671943200963042 /* Saira-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5F92671943200963042 /* Saira-Regular.ttf */; };
+		017FE6042671943200963042 /* Saira-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5FA2671943200963042 /* Saira-ExtraLight.ttf */; };
+		017FE6062671943200963042 /* Saira-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5FC2671943200963042 /* Saira-Black.ttf */; };
+		017FE6072671943200963042 /* Saira-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5FD2671943200963042 /* Saira-SemiBold.ttf */; };
+		017FE6082671943200963042 /* Saira-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5FE2671943200963042 /* Saira-Thin.ttf */; };
+		017FE6092671943200963042 /* Saira-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE5FF2671943200963042 /* Saira-Bold.ttf */; };
+		017FE60A2671943200963042 /* Saira-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6002671943200963042 /* Saira-ExtraBold.ttf */; };
+		017FE60D2672FFFF00963042 /* DragonLogoBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FE60C2672FFFF00963042 /* DragonLogoBlack.png */; };
+		017FE6122673043100963042 /* RotateBoardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE60F2673043100963042 /* RotateBoardButton.swift */; };
+		017FE6132673043100963042 /* PlaceBoardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6102673043100963042 /* PlaceBoardButton.swift */; };
+		017FE6142673043100963042 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6112673043100963042 /* README */; };
+		017FE67D2673084400963042 /* Block.reality in Resources */ = {isa = PBXBuildFile; fileRef = 017FE65A2673084400963042 /* Block.reality */; };
+		017FE67E2673084400963042 /* Block.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE65B2673084400963042 /* Block.usdz */; };
+		017FE67F2673084400963042 /* MinigameMenuViewManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE65C2673084400963042 /* MinigameMenuViewManipulation.swift */; };
+		017FE6802673084400963042 /* Default.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017FE65E2673084400963042 /* Default.storyboard */; };
+		017FE6812673084400963042 /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE65F2673084400963042 /* PassThroughView.swift */; };
+		017FE6822673084400963042 /* Minigame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6602673084400963042 /* Minigame.swift */; };
+		017FE6832673084400963042 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6612673084400963042 /* UIViewExtension.swift */; };
+		017FE6842673084400963042 /* MovementState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6632673084400963042 /* MovementState.swift */; };
+		017FE6852673084400963042 /* MovementGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6642673084400963042 /* MovementGame.swift */; };
+		017FE6862673084400963042 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6652673084400963042 /* up.png */; };
+		017FE6872673084400963042 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6662673084400963042 /* down.png */; };
+		017FE6882673084400963042 /* MovementGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6672673084400963042 /* MovementGame.storyboard */; };
+		017FE6892673084400963042 /* MovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6682673084400963042 /* MovementViewController.swift */; };
+		017FE68A2673084400963042 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6692673084400963042 /* README.md */; };
+		017FE68B2673084400963042 /* Wolf.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE66B2673084400963042 /* Wolf.usdz */; };
+		017FE68C2673084400963042 /* Puffer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE66C2673084400963042 /* Puffer.usdz */; };
+		017FE68D2673084400963042 /* Fox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE66D2673084400963042 /* Fox.usdz */; };
+		017FE68E2673084400963042 /* TraceProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE66E2673084400963042 /* TraceProgressSection.swift */; };
+		017FE68F2673084400963042 /* TraceTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE66F2673084400963042 /* TraceTargetType.swift */; };
+		017FE6902673084400963042 /* Deer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6702673084400963042 /* Deer.usdz */; };
+		017FE6912673084400963042 /* TraceGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6712673084400963042 /* TraceGame.storyboard */; };
+		017FE6922673084400963042 /* TraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6722673084400963042 /* TraceViewController.swift */; };
+		017FE6932673084400963042 /* RedPanda.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6732673084400963042 /* RedPanda.usdz */; };
+		017FE6942673084400963042 /* TraceGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6742673084400963042 /* TraceGame.swift */; };
+		017FE6952673084400963042 /* Bear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 017FE6752673084400963042 /* Bear.usdz */; };
+		017FE6962673084400963042 /* TraceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6762673084400963042 /* TraceStackView.swift */; };
+		017FE6972673084400963042 /* MinigameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6772673084400963042 /* MinigameMenuViewController.swift */; };
+		017FE6982673084400963042 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6782673084400963042 /* Player.swift */; };
+		017FE6992673084400963042 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE6792673084400963042 /* Tile.swift */; };
+		017FE69A2673084400963042 /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE67A2673084400963042 /* TileGrid.swift */; };
+		017FE69C2673084400963042 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FE67C2673084400963042 /* GameBoard.swift */; };
 		01D355BA26277F2E006B261E /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D355B926277F2E006B261E /* CustomBox.swift */; };
 		01D355BC2627818F006B261E /* Decoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D355BB2627818F006B261E /* Decoration.swift */; };
 /* End PBXBuildFile section */
@@ -89,7 +130,6 @@
 		010257DC25FC25F2000251E5 /* run.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = run.usdz; sourceTree = SOURCE_ROOT; };
 		010257DD25FC25F2000251E5 /* squat version 1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "squat version 1.usdz"; sourceTree = SOURCE_ROOT; };
 		010257DE25FC25F2000251E5 /* squat version 2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "squat version 2.usdz"; sourceTree = SOURCE_ROOT; };
-		0106F1F2263076E300F6036E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0112FBEE2630C5B800E2E823 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		01191AB0261E688D00C19B55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		011F911225E5DB1C00382FBC /* ARHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +147,7 @@
 		011F913925E5DB1D00382FBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../ARHealthUITests/Info.plist; sourceTree = "<group>"; };
 		012999B125F88BE0001CB91B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		012999B325F88C19001CB91B /* SnapshotAnchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotAnchor.swift; sourceTree = "<group>"; };
-		01651BC726571F9200FDA340 /* arhealthlandingbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arhealthlandingbg.png; sourceTree = SOURCE_ROOT; };
+		01651BC726571F9200FDA340 /* arhealthlandingbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arhealthlandingbg.png; path = ARHealth/Assets/arhealthlandingbg.png; sourceTree = SOURCE_ROOT; };
 		01651BCA265720E500FDA340 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		01651BCB265720E500FDA340 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		01651BCC265720E500FDA340 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -140,11 +180,55 @@
 		01651BFC26572EEB00FDA340 /* AppLogo1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo1024x1024.png; sourceTree = "<group>"; };
 		01651BFD26572EEB00FDA340 /* AppLogo87x87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo87x87.png; sourceTree = "<group>"; };
 		01651BFE26572EEB00FDA340 /* AppLogo20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo20x20.png; sourceTree = "<group>"; };
-		01651C0B2657315800FDA340 /* vr-20-512 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vr-20-512 1.png"; sourceTree = SOURCE_ROOT; };
-		01651C0C2657315800FDA340 /* DragonLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonLogo.png; sourceTree = SOURCE_ROOT; };
-		01651C0D2657315800FDA340 /* CheckButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckButton.png; sourceTree = SOURCE_ROOT; };
-		01651C112657361600FDA340 /* OverlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayController.swift; sourceTree = "<group>"; };
-		01932B45261525A000B0F731 /* ARforHealthcareLanding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARforHealthcareLanding.png; sourceTree = SOURCE_ROOT; };
+		01651C0B2657315800FDA340 /* vr-20-512 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "vr-20-512 1.png"; path = "ARHealth/Assets/vr-20-512 1.png"; sourceTree = SOURCE_ROOT; };
+		01651C0C2657315800FDA340 /* DragonLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DragonLogo.png; path = ARHealth/Assets/DragonLogo.png; sourceTree = SOURCE_ROOT; };
+		01651C0D2657315800FDA340 /* CheckButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CheckButton.png; path = ARHealth/Assets/CheckButton.png; sourceTree = SOURCE_ROOT; };
+		01651C112657361600FDA340 /* OverlayControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayControllers.swift; sourceTree = "<group>"; };
+		017FE5F72671943200963042 /* Saira-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Medium.ttf"; sourceTree = "<group>"; };
+		017FE5F82671943200963042 /* Saira-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Light.ttf"; sourceTree = "<group>"; };
+		017FE5F92671943200963042 /* Saira-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Regular.ttf"; sourceTree = "<group>"; };
+		017FE5FA2671943200963042 /* Saira-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-ExtraLight.ttf"; sourceTree = "<group>"; };
+		017FE5FB2671943200963042 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		017FE5FC2671943200963042 /* Saira-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Black.ttf"; sourceTree = "<group>"; };
+		017FE5FD2671943200963042 /* Saira-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-SemiBold.ttf"; sourceTree = "<group>"; };
+		017FE5FE2671943200963042 /* Saira-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Thin.ttf"; sourceTree = "<group>"; };
+		017FE5FF2671943200963042 /* Saira-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Bold.ttf"; sourceTree = "<group>"; };
+		017FE6002671943200963042 /* Saira-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-ExtraBold.ttf"; sourceTree = "<group>"; };
+		017FE60C2672FFFF00963042 /* DragonLogoBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonLogoBlack.png; sourceTree = "<group>"; };
+		017FE60F2673043100963042 /* RotateBoardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateBoardButton.swift; sourceTree = "<group>"; };
+		017FE6102673043100963042 /* PlaceBoardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceBoardButton.swift; sourceTree = "<group>"; };
+		017FE6112673043100963042 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		017FE65A2673084400963042 /* Block.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = Block.reality; sourceTree = "<group>"; };
+		017FE65B2673084400963042 /* Block.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Block.usdz; sourceTree = "<group>"; };
+		017FE65C2673084400963042 /* MinigameMenuViewManipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinigameMenuViewManipulation.swift; sourceTree = "<group>"; };
+		017FE65E2673084400963042 /* Default.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Default.storyboard; sourceTree = "<group>"; };
+		017FE65F2673084400963042 /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
+		017FE6602673084400963042 /* Minigame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Minigame.swift; sourceTree = "<group>"; };
+		017FE6612673084400963042 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		017FE6632673084400963042 /* MovementState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementState.swift; sourceTree = "<group>"; };
+		017FE6642673084400963042 /* MovementGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementGame.swift; sourceTree = "<group>"; };
+		017FE6652673084400963042 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		017FE6662673084400963042 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		017FE6672673084400963042 /* MovementGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovementGame.storyboard; sourceTree = "<group>"; };
+		017FE6682673084400963042 /* MovementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementViewController.swift; sourceTree = "<group>"; };
+		017FE6692673084400963042 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		017FE66B2673084400963042 /* Wolf.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Wolf.usdz; sourceTree = "<group>"; };
+		017FE66C2673084400963042 /* Puffer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Puffer.usdz; sourceTree = "<group>"; };
+		017FE66D2673084400963042 /* Fox.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Fox.usdz; sourceTree = "<group>"; };
+		017FE66E2673084400963042 /* TraceProgressSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceProgressSection.swift; sourceTree = "<group>"; };
+		017FE66F2673084400963042 /* TraceTargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceTargetType.swift; sourceTree = "<group>"; };
+		017FE6702673084400963042 /* Deer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Deer.usdz; sourceTree = "<group>"; };
+		017FE6712673084400963042 /* TraceGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TraceGame.storyboard; sourceTree = "<group>"; };
+		017FE6722673084400963042 /* TraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceViewController.swift; sourceTree = "<group>"; };
+		017FE6732673084400963042 /* RedPanda.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = RedPanda.usdz; sourceTree = "<group>"; };
+		017FE6742673084400963042 /* TraceGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceGame.swift; sourceTree = "<group>"; };
+		017FE6752673084400963042 /* Bear.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Bear.usdz; sourceTree = "<group>"; };
+		017FE6762673084400963042 /* TraceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceStackView.swift; sourceTree = "<group>"; };
+		017FE6772673084400963042 /* MinigameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinigameMenuViewController.swift; sourceTree = "<group>"; };
+		017FE6782673084400963042 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		017FE6792673084400963042 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		017FE67A2673084400963042 /* TileGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileGrid.swift; sourceTree = "<group>"; };
+		017FE67C2673084400963042 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		01D355B926277F2E006B261E /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
 		01D355BB2627818F006B261E /* Decoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,8 +282,10 @@
 		011F911425E5DB1C00382FBC /* ARHealth */ = {
 			isa = PBXGroup;
 			children = (
-				01932B45261525A000B0F731 /* ARforHealthcareLanding.png */,
-				01651BC726571F9200FDA340 /* arhealthlandingbg.png */,
+				017FE6592673084400963042 /* Minigame */,
+				017FE60E2673043100963042 /* 2D Elements */,
+				017FE60B2671943F00963042 /* Assets */,
+				01B30A15265A17930070A722 /* ViewControllers */,
 				012999B125F88BE0001CB91B /* Utilities.swift */,
 				012999B325F88C19001CB91B /* SnapshotAnchor.swift */,
 				011F911525E5DB1C00382FBC /* AppDelegate.swift */,
@@ -211,18 +297,11 @@
 				011F911B25E5DB1C00382FBC /* Main.storyboard */,
 				011F911E25E5DB1D00382FBC /* Assets.xcassets */,
 				011F912025E5DB1D00382FBC /* LaunchScreen.storyboard */,
-				01651BC9265720E500FDA340 /* Montserrat */,
 				01651BF226572EEB00FDA340 /* MockLogos */,
 				011F912325E5DB1D00382FBC /* Info.plist */,
-				01651C0D2657315800FDA340 /* CheckButton.png */,
-				01651C0C2657315800FDA340 /* DragonLogo.png */,
-				01651C0B2657315800FDA340 /* vr-20-512 1.png */,
 				01D355B926277F2E006B261E /* CustomBox.swift */,
 				01D355BB2627818F006B261E /* Decoration.swift */,
-				0106F1F2263076E300F6036E /* Player.swift */,
 				0112FBEE2630C5B800E2E823 /* Plane.swift */,
-				01651BF02657253100FDA340 /* HomeViewController.swift */,
-				01651C112657361600FDA340 /* OverlayController.swift */,
 			);
 			path = ARHealth;
 			sourceTree = "<group>";
@@ -268,7 +347,8 @@
 				01651BDB265720E500FDA340 /* Montserrat-SemiBoldItalic.ttf */,
 				01651BDC265720E500FDA340 /* Montserrat-ExtraBoldItalic.ttf */,
 			);
-			path = Montserrat;
+			name = Montserrat;
+			path = ARHealth/Assets/Montserrat;
 			sourceTree = SOURCE_ROOT;
 		};
 		01651BF226572EEB00FDA340 /* MockLogos */ = {
@@ -289,6 +369,119 @@
 			);
 			path = MockLogos;
 			sourceTree = SOURCE_ROOT;
+		};
+		017FE5F62671943200963042 /* Saira */ = {
+			isa = PBXGroup;
+			children = (
+				017FE5F72671943200963042 /* Saira-Medium.ttf */,
+				017FE5F82671943200963042 /* Saira-Light.ttf */,
+				017FE5F92671943200963042 /* Saira-Regular.ttf */,
+				017FE5FA2671943200963042 /* Saira-ExtraLight.ttf */,
+				017FE5FB2671943200963042 /* OFL.txt */,
+				017FE5FC2671943200963042 /* Saira-Black.ttf */,
+				017FE5FD2671943200963042 /* Saira-SemiBold.ttf */,
+				017FE5FE2671943200963042 /* Saira-Thin.ttf */,
+				017FE5FF2671943200963042 /* Saira-Bold.ttf */,
+				017FE6002671943200963042 /* Saira-ExtraBold.ttf */,
+			);
+			name = Saira;
+			path = ARHealth/Assets/Saira;
+			sourceTree = SOURCE_ROOT;
+		};
+		017FE60B2671943F00963042 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				01651BC726571F9200FDA340 /* arhealthlandingbg.png */,
+				01651C0D2657315800FDA340 /* CheckButton.png */,
+				01651C0C2657315800FDA340 /* DragonLogo.png */,
+				017FE60C2672FFFF00963042 /* DragonLogoBlack.png */,
+				01651C0B2657315800FDA340 /* vr-20-512 1.png */,
+				01651BC9265720E500FDA340 /* Montserrat */,
+				017FE5F62671943200963042 /* Saira */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		017FE60E2673043100963042 /* 2D Elements */ = {
+			isa = PBXGroup;
+			children = (
+				017FE60F2673043100963042 /* RotateBoardButton.swift */,
+				017FE6102673043100963042 /* PlaceBoardButton.swift */,
+				017FE6112673043100963042 /* README */,
+			);
+			path = "2D Elements";
+			sourceTree = "<group>";
+		};
+		017FE6592673084400963042 /* Minigame */ = {
+			isa = PBXGroup;
+			children = (
+				017FE65A2673084400963042 /* Block.reality */,
+				017FE65B2673084400963042 /* Block.usdz */,
+				017FE65C2673084400963042 /* MinigameMenuViewManipulation.swift */,
+				017FE65D2673084400963042 /* Minigames */,
+				017FE6772673084400963042 /* MinigameMenuViewController.swift */,
+				017FE6782673084400963042 /* Player.swift */,
+				017FE6792673084400963042 /* Tile.swift */,
+				017FE67A2673084400963042 /* TileGrid.swift */,
+				017FE67C2673084400963042 /* GameBoard.swift */,
+			);
+			path = Minigame;
+			sourceTree = "<group>";
+		};
+		017FE65D2673084400963042 /* Minigames */ = {
+			isa = PBXGroup;
+			children = (
+				017FE65E2673084400963042 /* Default.storyboard */,
+				017FE65F2673084400963042 /* PassThroughView.swift */,
+				017FE6602673084400963042 /* Minigame.swift */,
+				017FE6612673084400963042 /* UIViewExtension.swift */,
+				017FE6622673084400963042 /* MovementGame */,
+				017FE6692673084400963042 /* README.md */,
+				017FE66A2673084400963042 /* TraceGame */,
+			);
+			path = Minigames;
+			sourceTree = "<group>";
+		};
+		017FE6622673084400963042 /* MovementGame */ = {
+			isa = PBXGroup;
+			children = (
+				017FE6632673084400963042 /* MovementState.swift */,
+				017FE6642673084400963042 /* MovementGame.swift */,
+				017FE6652673084400963042 /* up.png */,
+				017FE6662673084400963042 /* down.png */,
+				017FE6672673084400963042 /* MovementGame.storyboard */,
+				017FE6682673084400963042 /* MovementViewController.swift */,
+			);
+			path = MovementGame;
+			sourceTree = "<group>";
+		};
+		017FE66A2673084400963042 /* TraceGame */ = {
+			isa = PBXGroup;
+			children = (
+				017FE66B2673084400963042 /* Wolf.usdz */,
+				017FE66C2673084400963042 /* Puffer.usdz */,
+				017FE66D2673084400963042 /* Fox.usdz */,
+				017FE66E2673084400963042 /* TraceProgressSection.swift */,
+				017FE66F2673084400963042 /* TraceTargetType.swift */,
+				017FE6702673084400963042 /* Deer.usdz */,
+				017FE6712673084400963042 /* TraceGame.storyboard */,
+				017FE6722673084400963042 /* TraceViewController.swift */,
+				017FE6732673084400963042 /* RedPanda.usdz */,
+				017FE6742673084400963042 /* TraceGame.swift */,
+				017FE6752673084400963042 /* Bear.usdz */,
+				017FE6762673084400963042 /* TraceStackView.swift */,
+			);
+			path = TraceGame;
+			sourceTree = "<group>";
+		};
+		01B30A15265A17930070A722 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01651BF02657253100FDA340 /* HomeViewController.swift */,
+				01651C112657361600FDA340 /* OverlayControllers.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -394,48 +587,71 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017FE6072671943200963042 /* Saira-SemiBold.ttf in Resources */,
 				01651BE5265720E500FDA340 /* Montserrat-MediumItalic.ttf in Resources */,
 				01651C0F2657315800FDA340 /* DragonLogo.png in Resources */,
 				01651BE0265720E500FDA340 /* Montserrat-Light.ttf in Resources */,
 				01651BDF265720E500FDA340 /* Montserrat-BoldItalic.ttf in Resources */,
+				017FE6032671943200963042 /* Saira-Regular.ttf in Resources */,
 				01651BE7265720E500FDA340 /* Montserrat-SemiBold.ttf in Resources */,
+				017FE68C2673084400963042 /* Puffer.usdz in Resources */,
 				01651BDD265720E500FDA340 /* Montserrat-LightItalic.ttf in Resources */,
+				017FE60A2671943200963042 /* Saira-ExtraBold.ttf in Resources */,
+				017FE6872673084400963042 /* down.png in Resources */,
+				017FE6862673084400963042 /* up.png in Resources */,
 				01651C0526572EEB00FDA340 /* AppLogo120x120.png in Resources */,
+				017FE6082671943200963042 /* Saira-Thin.ttf in Resources */,
 				01651C0626572EEB00FDA340 /* AppLogo167x167.png in Resources */,
 				01651C0A26572EEB00FDA340 /* AppLogo20x20.png in Resources */,
 				011F912225E5DB1D00382FBC /* LaunchScreen.storyboard in Resources */,
+				017FE6952673084400963042 /* Bear.usdz in Resources */,
+				017FE6802673084400963042 /* Default.storyboard in Resources */,
 				01651C0E2657315800FDA340 /* vr-20-512 1.png in Resources */,
+				017FE60D2672FFFF00963042 /* DragonLogoBlack.png in Resources */,
 				01651BED265720E500FDA340 /* Montserrat-Italic.ttf in Resources */,
 				01651C0126572EEB00FDA340 /* AppLogo58x58.png in Resources */,
 				01651BEC265720E500FDA340 /* Montserrat-Regular.ttf in Resources */,
-				01651BEA265720E500FDA340 /* OFL.txt in Resources */,
+				017FE6142673043100963042 /* README in Resources */,
 				010257E125FC25F3000251E5 /* squat version 1.usdz in Resources */,
 				01191AB1261E688D00C19B55 /* Default-568h@2x.png in Resources */,
+				017FE6882673084400963042 /* MovementGame.storyboard in Resources */,
 				01651BEF265720E500FDA340 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				017FE6012671943200963042 /* Saira-Medium.ttf in Resources */,
 				01651BC826571F9200FDA340 /* arhealthlandingbg.png in Resources */,
 				01651BFF26572EEB00FDA340 /* AppLogo152x152.png in Resources */,
+				017FE68B2673084400963042 /* Wolf.usdz in Resources */,
 				011F911F25E5DB1D00382FBC /* Assets.xcassets in Resources */,
 				01651BEB265720E500FDA340 /* Montserrat-Black.ttf in Resources */,
 				01651BEE265720E500FDA340 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				01651C0026572EEB00FDA340 /* AppLogo60x60.png in Resources */,
+				017FE6042671943200963042 /* Saira-ExtraLight.ttf in Resources */,
 				01651C0326572EEB00FDA340 /* AppLogo76x76.png in Resources */,
 				011F911D25E5DB1C00382FBC /* Main.storyboard in Resources */,
 				01651C0826572EEB00FDA340 /* AppLogo1024x1024.png in Resources */,
+				017FE6022671943200963042 /* Saira-Light.ttf in Resources */,
 				010257E225FC25F3000251E5 /* squat version 2.usdz in Resources */,
 				01651C102657315800FDA340 /* CheckButton.png in Resources */,
-				01932B46261525A000B0F731 /* ARforHealthcareLanding.png in Resources */,
+				017FE67E2673084400963042 /* Block.usdz in Resources */,
+				017FE68A2673084400963042 /* README.md in Resources */,
+				017FE6062671943200963042 /* Saira-Black.ttf in Resources */,
 				01651BE9265720E500FDA340 /* Montserrat-ExtraBold.ttf in Resources */,
 				01651C0926572EEB00FDA340 /* AppLogo87x87.png in Resources */,
 				01651BE8265720E500FDA340 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				017FE6092671943200963042 /* Saira-Bold.ttf in Resources */,
 				010257DF25FC25F2000251E5 /* fly.usdz in Resources */,
 				01651C0426572EEB00FDA340 /* AppLogo80x80.png in Resources */,
+				017FE6912673084400963042 /* TraceGame.storyboard in Resources */,
 				01651BE6265720E500FDA340 /* Montserrat-BlackItalic.ttf in Resources */,
 				01651C0226572EEB00FDA340 /* AppLogo180x180.png in Resources */,
+				017FE68D2673084400963042 /* Fox.usdz in Resources */,
 				01651BE3265720E500FDA340 /* Montserrat-Thin.ttf in Resources */,
 				01651BDE265720E500FDA340 /* Montserrat-Medium.ttf in Resources */,
 				01651BE4265720E500FDA340 /* Montserrat-Bold.ttf in Resources */,
 				01651BE2265720E500FDA340 /* Montserrat-ExtraLight.ttf in Resources */,
+				017FE6932673084400963042 /* RedPanda.usdz in Resources */,
+				017FE67D2673084400963042 /* Block.reality in Resources */,
 				010257E025FC25F3000251E5 /* run.usdz in Resources */,
+				017FE6902673084400963042 /* Deer.usdz in Resources */,
 				01651BE1265720E500FDA340 /* Montserrat-ThinItalic.ttf in Resources */,
 				01651C0726572EEB00FDA340 /* AppLogo40x40.png in Resources */,
 			);
@@ -466,14 +682,32 @@
 			files = (
 				01D355BA26277F2E006B261E /* CustomBox.swift in Sources */,
 				011F911825E5DB1C00382FBC /* ViewController.swift in Sources */,
+				017FE6852673084400963042 /* MovementGame.swift in Sources */,
+				017FE6972673084400963042 /* MinigameMenuViewController.swift in Sources */,
+				017FE6132673043100963042 /* PlaceBoardButton.swift in Sources */,
+				017FE69A2673084400963042 /* TileGrid.swift in Sources */,
 				012999B525F88E83001CB91B /* SnapshotAnchor.swift in Sources */,
 				01D355BC2627818F006B261E /* Decoration.swift in Sources */,
-				0106F1F3263076E300F6036E /* Player.swift in Sources */,
+				017FE6122673043100963042 /* RotateBoardButton.swift in Sources */,
+				017FE6832673084400963042 /* UIViewExtension.swift in Sources */,
+				017FE6892673084400963042 /* MovementViewController.swift in Sources */,
+				017FE67F2673084400963042 /* MinigameMenuViewManipulation.swift in Sources */,
 				01651BF12657253100FDA340 /* HomeViewController.swift in Sources */,
-				01651C122657361600FDA340 /* OverlayController.swift in Sources */,
+				017FE6812673084400963042 /* PassThroughView.swift in Sources */,
+				01651C122657361600FDA340 /* OverlayControllers.swift in Sources */,
+				017FE6992673084400963042 /* Tile.swift in Sources */,
+				017FE6922673084400963042 /* TraceViewController.swift in Sources */,
+				017FE6962673084400963042 /* TraceStackView.swift in Sources */,
 				011F911625E5DB1C00382FBC /* AppDelegate.swift in Sources */,
+				017FE6982673084400963042 /* Player.swift in Sources */,
+				017FE6942673084400963042 /* TraceGame.swift in Sources */,
+				017FE68F2673084400963042 /* TraceTargetType.swift in Sources */,
 				0112FBEF2630C5B800E2E823 /* Plane.swift in Sources */,
+				017FE6822673084400963042 /* Minigame.swift in Sources */,
+				017FE69C2673084400963042 /* GameBoard.swift in Sources */,
 				012999B225F88BE0001CB91B /* Utilities.swift in Sources */,
+				017FE68E2673084400963042 /* TraceProgressSection.swift in Sources */,
+				017FE6842673084400963042 /* MovementState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

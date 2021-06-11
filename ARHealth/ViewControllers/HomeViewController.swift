@@ -11,6 +11,8 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
+    var signedIn:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton.layer.cornerRadius = 25
@@ -20,9 +22,10 @@ class HomeViewController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(identifier: "mainVC") as? ViewController else {
             return
         }
+        
 //        present(vc, animated: true)
 //        show(vc, sender:self)
-    self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
