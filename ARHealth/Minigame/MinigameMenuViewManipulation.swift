@@ -38,7 +38,7 @@ extension MinigameMenuViewController {
         self.boardState = .placed
         
         self.moveToGameplay()
-        self.addBackgroundModel()
+//        self.addBackgroundModel()
         
     }
     

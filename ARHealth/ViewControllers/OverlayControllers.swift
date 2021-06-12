@@ -64,7 +64,7 @@ class FirstTutorialViewController: UIViewController {
             self.removeFromParent()
         }
         
-        parent?.onboardNewUser()
+        parent?.runSession()
     }
 }
  

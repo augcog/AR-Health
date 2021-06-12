@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rjn-MD-fin">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,6 +13,9 @@
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
         <array key="Saira-Bold.ttf">
             <string>Saira-Bold</string>
         </array>
@@ -23,20 +26,100 @@
             <objects>
                 <viewController storyboardIdentifier="mainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Plw-tU-dWV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-Hl-XLa">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </arView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPc-Oe-wOr">
+                                <rect key="frame" x="72" y="390" width="270" height="310"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Brv-zm-6Ac">
+                                        <rect key="frame" x="29" y="65.000000000000014" width="212" height="180.33333333333337"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DragonLogoBlack.png" translatesAutoresizingMaskIntoConstraints="NO" id="1kv-fC-mTz">
+                                                <rect key="frame" x="0.0" y="0.0" width="212" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="yI1-mx-6nL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to AR Health" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joP-H1-tOf">
+                                                <rect key="frame" x="0.0" y="52" width="212" height="27"/>
+                                                <fontDescription key="fontDescription" name="Saira-Bold" family="Saira" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's get you started!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMK-fX-AKR">
+                                                <rect key="frame" x="0.0" y="91" width="212" height="12.333333333333329"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="212" id="Xgo-l4-y6G"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your world..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-1v-c0T">
+                                                <rect key="frame" x="0.0" y="115.33333333333337" width="212" height="28"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="RkP-Uf-3BS"/>
+                                                </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="3H5-SM-UoS">
+                                                <rect key="frame" x="0.0" y="155.33333333333337" width="212" height="25"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sT9-IY-Ba9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="25"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="10"/>
+                                                        <state key="normal" title="Yes">
+                                                            <color key="titleColor" red="0.94901960780000005" green="0.56078431370000004" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="toggleGardenButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4p8-oh-MAH"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxl-Bj-9SL">
+                                                        <rect key="frame" x="113" y="0.0" width="99" height="25"/>
+                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="10"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Create Garden">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="toggleGardenCreatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nYc-rI-XrG"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.56078431370000004" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.56078431370000004" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Brv-zm-6Ac" firstAttribute="centerY" secondItem="qPc-Oe-wOr" secondAttribute="centerY" id="PaD-oU-o5t"/>
+                                    <constraint firstAttribute="width" constant="270" id="ZMK-Uk-23r"/>
+                                    <constraint firstItem="Brv-zm-6Ac" firstAttribute="centerX" secondItem="qPc-Oe-wOr" secondAttribute="centerX" id="fE5-Xc-ggu"/>
+                                    <constraint firstAttribute="height" constant="310" id="qiF-5S-WMJ"/>
+                                </constraints>
+                            </view>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0VD-GN-L2R">
-                                <rect key="frame" x="114.5" y="752" width="185" height="38"/>
+                                <rect key="frame" x="99" y="626" width="216" height="38"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fvq-eh-izP">
-                                    <rect key="frame" x="0.0" y="0.0" width="185" height="38"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="216" height="38"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initializing AR session." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0n-f9-4e0">
-                                            <rect key="frame" x="8" y="8" width="169" height="22"/>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initializing AR session." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0n-f9-4e0">
+                                            <rect key="frame" x="8" y="8" width="200" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="tCr-0N-d83"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -60,7 +143,7 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoH-Dz-Sx7">
-                                <rect key="frame" x="129" y="433.5" width="156" height="29"/>
+                                <rect key="frame" x="129" y="353.66666666666669" width="156" height="29"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Enter Decoration Mode">
@@ -72,7 +155,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewD-NF-S4p">
-                                <rect key="frame" x="132" y="470" width="150" height="29"/>
+                                <rect key="frame" x="132" y="390" width="150" height="29"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="zaL-ce-ohd"/>
@@ -88,7 +171,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGr-e4-ih9">
-                                <rect key="frame" x="131" y="549" width="152" height="29"/>
+                                <rect key="frame" x="131" y="469" width="152" height="29"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -101,7 +184,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DebugLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Zm-74v">
-                                <rect key="frame" x="157" y="346" width="100" height="50"/>
+                                <rect key="frame" x="157" y="266" width="100" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9fs-V6-ziA"/>
                                     <constraint firstAttribute="width" constant="100" id="oPl-rz-0ZZ"/>
@@ -111,10 +194,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-p8-l8z">
-                                <rect key="frame" x="0.0" y="88" width="414" height="128"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analyzing World..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ5-Wj-rk5">
-                                        <rect key="frame" x="99" y="0.0" width="216" height="39.5"/>
+                                        <rect key="frame" x="99" y="0.0" width="216" height="39.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Saira-Bold" family="Saira" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -126,7 +209,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="wTO-De-ptj">
-                                        <rect key="frame" x="129" y="51.5" width="156" height="25"/>
+                                        <rect key="frame" x="129" y="51.666666666666671" width="156" height="25"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DragonLogoBlack.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzr-Lq-qea">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
@@ -163,7 +246,6 @@
                                     <constraint firstItem="CJ5-Wj-rk5" firstAttribute="centerX" secondItem="HX4-p8-l8z" secondAttribute="centerX" id="hcN-BS-mg0"/>
                                     <constraint firstAttribute="height" constant="128" id="jbx-Vm-bBd"/>
                                     <constraint firstItem="wTO-De-ptj" firstAttribute="centerX" secondItem="HX4-p8-l8z" secondAttribute="centerX" id="tVo-oO-pvo"/>
-                                    <constraint firstAttribute="width" constant="414" id="xRR-u7-X8s"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -171,6 +253,7 @@
                         <constraints>
                             <constraint firstItem="HX4-p8-l8z" firstAttribute="leading" secondItem="1pf-y0-cG6" secondAttribute="leading" id="7th-da-7Jn"/>
                             <constraint firstItem="0VD-GN-L2R" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="83i-a7-NWP"/>
+                            <constraint firstItem="qPc-Oe-wOr" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="9oI-oM-u4E"/>
                             <constraint firstItem="HX4-p8-l8z" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="DDV-MQ-gOO"/>
                             <constraint firstItem="u59-Zm-74v" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="EVt-Bu-FFi"/>
                             <constraint firstItem="XGr-e4-ih9" firstAttribute="top" secondItem="ewD-NF-S4p" secondAttribute="bottom" constant="50" id="MRN-bl-Bxw"/>
@@ -183,12 +266,12 @@
                             <constraint firstItem="AoH-Dz-Sx7" firstAttribute="top" secondItem="u59-Zm-74v" secondAttribute="bottom" constant="37.5" id="a72-3W-hh2"/>
                             <constraint firstItem="HX4-p8-l8z" firstAttribute="top" secondItem="1pf-y0-cG6" secondAttribute="top" constant="44" id="cqa-MW-K1a"/>
                             <constraint firstItem="XGr-e4-ih9" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="dMv-Tu-yKC"/>
+                            <constraint firstItem="1pf-y0-cG6" firstAttribute="bottom" secondItem="qPc-Oe-wOr" secondAttribute="bottom" constant="36" id="lba-b0-1Jg"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="trailing" secondItem="1pf-y0-cG6" secondAttribute="trailing" id="lvx-ZU-6F2"/>
                             <constraint firstAttribute="bottom" secondItem="s1F-Hl-XLa" secondAttribute="bottom" id="oeu-dm-nSQ"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerY" secondItem="Plw-tU-dWV" secondAttribute="centerY" id="r8Q-4O-3Wt"/>
                             <constraint firstItem="s1F-Hl-XLa" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="unY-Zc-K1y"/>
                             <constraint firstItem="ewD-NF-S4p" firstAttribute="centerX" secondItem="Plw-tU-dWV" secondAttribute="centerX" id="w1u-vg-aMY"/>
-                            <constraint firstItem="HX4-p8-l8z" firstAttribute="trailing" secondItem="1pf-y0-cG6" secondAttribute="trailing" id="xXO-OR-dvS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1pf-y0-cG6"/>
                     </view>
@@ -196,6 +279,14 @@
                         <outlet property="arView" destination="s1F-Hl-XLa" id="Puw-Yy-p5i"/>
                         <outlet property="debugLabel" destination="u59-Zm-74v" id="a67-ag-lOt"/>
                         <outlet property="decorationModeButton" destination="AoH-Dz-Sx7" id="UDp-C3-0Vi"/>
+                        <outlet property="gardenCreatorButton" destination="rxl-Bj-9SL" id="Yai-tv-pHF"/>
+                        <outlet property="gardenCreatorButton2" destination="sT9-IY-Ba9" id="bMv-rC-IFB"/>
+                        <outlet property="gardenCreatorHeadline" destination="joP-H1-tOf" id="DM7-1Z-CHy"/>
+                        <outlet property="gardenCreatorIcon" destination="1kv-fC-mTz" id="qah-4v-Lod"/>
+                        <outlet property="gardenCreatorInput" destination="K5L-1v-c0T" id="EXu-kc-dnA"/>
+                        <outlet property="gardenCreatorSubhead" destination="aMK-fX-AKR" id="E2s-jE-Qif"/>
+                        <outlet property="gardenCreatorView" destination="qPc-Oe-wOr" id="2vP-mD-dcp"/>
+                        <outlet property="gardenCreatorViewConstraint" destination="Mwe-aK-w2y" id="DnH-hU-OhT"/>
                         <outlet property="loadingView" destination="wTO-De-ptj" id="0SX-7g-Sja"/>
                         <outlet property="placeBoundaryButton" destination="XGr-e4-ih9" id="cnW-Hn-PXn"/>
                         <outlet property="placeButton" destination="ewD-NF-S4p" id="1Lf-mW-Ggs"/>
@@ -207,34 +298,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762" y="134"/>
+            <point key="canvasLocation" x="2757" y="134"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="SDp-CW-w3R">
             <objects>
                 <viewController storyboardIdentifier="homeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CFi-iT-JvN" customClass="HomeViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ySJ-Wn-Oj4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arhealthlandingbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="40S-o6-dEs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="534"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYB-NN-sjG">
-                                <rect key="frame" x="114" y="504" width="186" height="54"/>
+                                <rect key="frame" x="114" y="422" width="186" height="54"/>
                                 <fontDescription key="fontDescription" name="Saira-Bold" family="Saira" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR Health" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqX-jH-yR7">
-                                <rect key="frame" x="91" y="559" width="232" height="77.5"/>
+                                <rect key="frame" x="91" y="477.00000000000006" width="232" height="77.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Saira-Bold" family="Saira" pointSize="49"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdN-SS-MTx">
-                                <rect key="frame" x="132" y="675.5" width="150" height="50"/>
+                                <rect key="frame" x="132" y="593.66666666666663" width="150" height="50"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jwa-jH-n1t"/>
@@ -278,7 +369,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rjn-MD-fin" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9Nc-N6-GtK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -295,11 +386,11 @@
             <objects>
                 <viewController storyboardIdentifier="firstTutorialVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WxO-Eq-uRl" customClass="FirstTutorialViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VmH-w7-vyd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJX-fD-2UJ">
-                                <rect key="frame" x="167" y="612" width="80" height="80"/>
+                                <rect key="frame" x="167" y="486" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Ujb-kD-WEn"/>
                                     <constraint firstAttribute="width" constant="80" id="XMZ-Fp-2iJ"/>
@@ -310,14 +401,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vr-20-512 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="egn-zj-hsK">
-                                <rect key="frame" x="85.5" y="254" width="243" height="142"/>
+                                <rect key="frame" x="85.666666666666686" y="210" width="243" height="142"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="243" id="18C-s8-10D"/>
                                     <constraint firstAttribute="height" constant="142" id="Tgz-Zh-I2I"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Move your device to a find an AR surface" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzz-Fh-sxM">
-                                <rect key="frame" x="48.5" y="365" width="317" height="194"/>
+                                <rect key="frame" x="48.666666666666657" y="321" width="317" height="194"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="194" id="GDU-EW-mBW"/>
                                     <constraint firstAttribute="width" constant="317" id="m1c-Jg-vo4"/>
@@ -343,37 +434,22 @@
             </objects>
             <point key="canvasLocation" x="941" y="134"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="T4J-Tg-lhC">
-            <objects>
-                <viewController id="j5g-bH-Fte" customClass="ViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="I7m-eY-Bfy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="oaq-Ix-YbY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DL1-OC-78a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1761" y="834"/>
-        </scene>
         <!--Minigame Menu View Controller-->
         <scene sceneID="7ai-7f-zej">
             <objects>
                 <viewController storyboardIdentifier="minigameMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z0j-IE-fnk" customClass="MinigameMenuViewController" customModule="ARHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CY1-cr-DfR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k3-IO-uMj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </arView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-2B-7Bq">
-                                <rect key="frame" x="182.5" y="662" width="51" height="31"/>
+                                <rect key="frame" x="182.66666666666666" y="536" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyK-yH-2k6">
-                                <rect key="frame" x="183.5" y="724" width="47" height="21"/>
+                                <rect key="frame" x="183.66666666666666" y="598" width="47" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -400,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFh-jf-h0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="834"/>
+            <point key="canvasLocation" x="45" y="1757"/>
         </scene>
     </scenes>
     <resources>

@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MultiProgressView",
+        "repositoryURL": "https://github.com/mac-gallagher/MultiProgressView.git",
+        "state": {
+          "branch": null,
+          "revision": "c4d920787553c9736f8c932170b318589b0eb1b2",
+          "version": "1.3.0"
+        }
+      },
+      {
+        "package": "Nimble",
+        "repositoryURL": "https://github.com/Quick/Nimble",
+        "state": {
+          "branch": null,
+          "revision": "7a46a5fc86cb917f69e3daf79fcb045283d8f008",
+          "version": "8.1.2"
+        }
+      },
+      {
+        "package": "Quick",
+        "repositoryURL": "https://github.com/Quick/Quick",
+        "state": {
+          "branch": null,
+          "revision": "09b3becb37cb2163919a3842a4c5fa6ec7130792",
+          "version": "2.2.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

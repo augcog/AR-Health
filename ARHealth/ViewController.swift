@@ -12,7 +12,7 @@ import RealityKit
 import AVFoundation
 import Foundation
 
-class ViewController: UIViewController, ARSessionDelegate {
+class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     // MARK: - UI Elements
     @IBOutlet var arView: ARView!
     
@@ -26,6 +26,14 @@ class ViewController: UIViewController, ARSessionDelegate {
     
     @IBOutlet weak var scanningView: UIView!
     @IBOutlet weak var loadingView: UIStackView!
+    
+    @IBOutlet weak var gardenCreatorView: UIView!
+    @IBOutlet weak var gardenCreatorIcon: UIImageView!
+    @IBOutlet weak var gardenCreatorButton: UIButton!
+    @IBOutlet weak var gardenCreatorInput: UITextField!
+    @IBOutlet weak var gardenCreatorButton2: UIButton!
+    var onboardIndex: Int = 0
+    
     
     var virtualPetAnchors: [AnchorEntity] = []
     var defaultConfiguration: ARWorldTrackingConfiguration {
@@ -60,7 +68,7 @@ class ViewController: UIViewController, ARSessionDelegate {
     
     // MARK: - Camera Variables
     var cameraTransform: simd_float4x4 = simd_float4x4.init()
-    var cameraAnchor: AnchorEntity = AnchorEntity(world: SIMD3<Float>(0,0,0))
+    var cameraAnchor: AnchorEntity = AnchorEntity(plane: .horizontal)
     
     // MARK: - Garden Variables
     var gardenBoundaryPoints: [SIMD3<Float>] = []
@@ -85,6 +93,36 @@ class ViewController: UIViewController, ARSessionDelegate {
         placeBoundaryButton.setTitle("Set Ground", for: .normal)
         debugLabel.text = "\(self.children.count)"
 //        self.runSession()
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @IBOutlet weak var gardenCreatorViewConstraint: NSLayoutConstraint!
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           // if keyboard size is not available for some reason, dont do anything
+           return
+        }
+      
+      // move the root view up by the distance of keyboard height
+//        self.gardenCreatorView.bottomAnchor. -= keyboardSize.height
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.gardenCreatorView.frame.origin.y = self.view.frame.height - self.gardenCreatorView.frame.height - keyboardSize.height
+        })
+        
+        gardenCreatorViewConstraint.constant = keyboardSize.height
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+      // move back the root view origin to zero
+      UIView.animate(withDuration: 1, animations: {
+          self.gardenCreatorView.frame.origin.y = self.view.frame.height - self.gardenCreatorView.frame.height - 36
+      })
+        
+        self.gardenCreatorViewConstraint.constant = 36
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,14 +161,13 @@ class ViewController: UIViewController, ARSessionDelegate {
 
 // MARK: - Delegate functions
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        if self.children.count == 0 {
+        if isScanningWorld {
             isFirstOverlayClosed = true
             scanningView.isHidden = false
-        }
-        
-        if isFirstOverlayClosed {
+            
             if (frame.worldMappingStatus == .mapped && frame.camera.trackingState.description == "Normal") {
-                enterMainScene()
+                isScanningWorld = false
+                onboardUser()
             } else {
                 for index in 0...2 {
                     let delay = 0.25*Double(index)
@@ -300,10 +337,8 @@ class ViewController: UIViewController, ARSessionDelegate {
         gardenAnchor = box
         arView.scene.anchors.append(box)
     }
-}
 
 // MARK: - Start of Lifecycle
-extension ViewController {
     func prepareMainScene() {
         self.worldHasBeenSaved = true
         self.arView.debugOptions = []
@@ -327,6 +362,19 @@ extension ViewController {
         self.view.didAddSubview(vc.view)
         self.addChild(vc)
         vc.didMove(toParent:self)
+        
+        
+        gardenCreatorView.layer.cornerRadius = 25
+        gardenCreatorView.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        gardenCreatorView.layer.shadowRadius = 25
+        gardenCreatorView.layer.shadowOpacity = 0.5
+        gardenCreatorView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        gardenCreatorButton.layer.cornerRadius = 15
+        gardenCreatorButton2.layer.cornerRadius = 15
+        gardenCreatorButton2.isHidden = true
+        gardenCreatorInput.layer.cornerRadius = 15
+        gardenCreatorInput.delegate = self
+        gardenCreatorView.isHidden = true
     }
     
     func enterMainScene() {
@@ -344,21 +392,21 @@ extension ViewController {
         sessionInfoView.isHidden = false
     }
     
-    func onboardNewUser() {
-        let alert = UIAlertController(title: "Welcome to \(gameName)! Please name your world.", message:"", preferredStyle: .alert)
-        let defaultName = "DK's Forest"
-        alert.addTextField{ (textField) in textField.placeholder = defaultName}
-        alert.addAction(UIAlertAction(title:"Confirm", style: .default, handler: {[weak alert] (_) in
-            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
-            self.worldName = userText.count > 0 ? userText : defaultName
-            self.worldHasBeenSaved = false
-            self.sessionInfoLabel.text = "The world has not been saved. Move your camera around."
-            
-            self.decorationModeButton.isHidden = true
-            
-            self.runSession()
-        }))
-    }
+//    func onboardNewUser() {
+//        let alert = UIAlertController(title: "Welcome to \(gameName)! Please name your world.", message:"", preferredStyle: .alert)
+//        let defaultName = "DK's Forest"
+//        alert.addTextField{ (textField) in textField.placeholder = defaultName}
+//        alert.addAction(UIAlertAction(title:"Confirm", style: .default, handler: {[weak alert] (_) in
+//            guard let textField = alert?.textFields?[0], let userText = textField.text else { return }
+//            self.worldName = userText.count > 0 ? userText : defaultName
+//            self.worldHasBeenSaved = false
+//            self.sessionInfoLabel.text = "The world has not been saved. Move your camera around."
+//
+//            self.decorationModeButton.isHidden = true
+//
+//            self.runSession()
+//        }))
+//    }
     
     @IBAction func enterDecorationMode(_ sender: UIButton) {
         isInDecorationMode = true
@@ -368,13 +416,13 @@ extension ViewController {
         arView.session.delegate = self
         arView.session.run(defaultConfiguration)
         
+        isScanningWorld = true
+        
         UIApplication.shared.isIdleTimerDisabled = true
     }
-}
 
 // MARK: - Dragon Movement
-
-extension ViewController {
+    
     //Initializes the dragon placement on a horizontal plane
     private func initializeDragon() {
         let anchor = AnchorEntity(plane: .horizontal)
@@ -472,4 +520,96 @@ extension ViewController {
         anchor.transform.translation = transform.translation
 //            }
     }
+
+
+// MARK: - Garden Decoration
+    @IBOutlet weak var gardenCreatorSubhead: UILabel!
+    @IBOutlet weak var gardenCreatorHeadline: UILabel!
+    
+    func onboardUser() {
+        gardenCreatorView.isHidden = false
+    }
+    
+    @IBAction func toggleGardenCreatorButton(_ sender: UIButton) {
+        switch onboardIndex {
+        case 0:
+            if gardenCreatorInput.text != "" {
+                self.worldName = gardenCreatorInput.text ?? ""
+                onboardIndex += 1
+                
+                gardenCreatorIcon.image = UIImage(named: "GardenFenceIcon.png")
+                gardenCreatorIcon.layer.opacity = 1.0
+                gardenCreatorHeadline.text = "Create Garden Fence"
+                gardenCreatorSubhead.text = "Let's create a boundary for your garden! First, find a spot to plant the fences and place your device there!"
+                gardenCreatorInput.isHidden = true
+                gardenCreatorButton.setTitle("Set Ground", for: .normal)
+            }
+            break
+        case 1:
+            onboardIndex += 1
+            
+            groundPoint = cameraAnchor.transform.translation
+            
+            gardenAnchor = AnchorEntity(plane: .horizontal)
+            let fence = try! Entity.loadModel(named: "fencepost")
+            gardenAnchor.setPosition(SIMD3<Float>(0,0,0), relativeTo: cameraAnchor)
+            
+            gardenAnchor.addChild(fence)
+            gardenAnchor.setPosition(SIMD3<Float>(0,0,0), relativeTo: gardenAnchor)
+            gardenAnchor.generateCollisionShapes(recursive: true)
+            
+            arView.scene.addAnchor(gardenAnchor.anchor!)
+            
+            
+            
+            
+            gardenCreatorIcon.image = UIImage(named: "GardenFenceIcon")
+            gardenCreatorHeadline.text = "Are you satisfied with your garden?"
+            gardenCreatorSubhead.text = ""
+            gardenCreatorInput.isHidden = true
+            gardenCreatorButton2.isHidden = false
+            
+            gardenCreatorButton2.setTitle("Yes", for: .normal)
+            gardenCreatorButton.setTitle("No", for: .normal)
+            break
+        case 2:
+            onboardIndex -= 1
+            
+            gardenCreatorInput.isHidden = false
+            gardenCreatorButton2.isHidden = true
+            
+            gardenCreatorIcon.image = UIImage(named: "GardenFenceIcon")
+            gardenCreatorHeadline.text = "Create Garden Fence"
+            gardenCreatorSubhead.text = "Let's create a boundary for your garden! First, find a spot to plant the fences and place your device there!"
+            gardenCreatorInput.isHidden = true
+            gardenCreatorButton.setTitle("Set Garden Ground", for: .normal)
+            break
+        default:
+            break
+        }
+    }
+    
+    @IBAction func toggleGardenButton2(_ sender: Any) {
+        switch onboardIndex {
+        case 2:
+            onboardIndex+=1
+            
+            UIView.animate(withDuration: 1, animations: {
+                self.gardenCreatorView.alpha = 0.0
+            })
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.gardenCreatorView.isHidden = true
+                self.enterMainScene()
+            }
+        default:
+            break
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
+

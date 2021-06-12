@@ -32,4 +32,3 @@ class Decoration: Entity, HasModel, HasAnchoring, HasCollision {
         fatalError("init() has not been implemented")
     }
 }
-
