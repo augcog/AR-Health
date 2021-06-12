@@ -2,11 +2,18 @@
 AR rehabilitation app designed for UCSF children's hospital.
 This is a research project done under the advisement of Professor Allen Yang and Kat Quigley.
 
+## Instructions
+1. When app loads, move your camera slowly to scan your environment. (Make sure to scan a horizontal plane)
+2. An invisible game board will show up with two buttons. Walk on the tiles as they light up to create a game board path.
+3. Once the game board lights up green, click "Place Board"
+4. A game board will show up with two types of minigames indicated by a M (the Squat game) and a bear (the Laser game). Walk to the minigame of your choice to start the game.
+5. To toggle on or off the minigame, toggle on or off the switch at the top.
+
 ## Installation
 1. Launch Terminal (You can find this via Spotlight)
-2. Clone the repository `git clone https://www.github.com/erwang01/ARrehab.git`
-3. Switch to the Integration branch. `git checkout integration`
-4. From finder, launch the project (Double click `ARrehab/ARrehab/ARrehab.xcodeproj`). You can also launch from XCode
+2. Clone the repository `git clone https://github.com/augcog/AR-Health.git`
+3. Switch to the Minigames branch. `git checkout minigames`
+4. From finder, launch the project (Double click `AR-Health/ARrehab/ARrehab.xcodeproj`). You can also launch from XCode
 5. Change the signing certificate to your own Apple Developer account.
     1. In the File heirarchy on the left panel, select the blue Xcode project icon (root of the heirarchy).
     2. In the main center editor on the top left there is a drop down, select ARrehab (the icon should be an `A` made of brushes)
