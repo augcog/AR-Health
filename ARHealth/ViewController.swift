@@ -32,6 +32,8 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     @IBOutlet weak var gardenCreatorButton: UIButton!
     @IBOutlet weak var gardenCreatorInput: UITextField!
     @IBOutlet weak var gardenCreatorButton2: UIButton!
+    @IBOutlet weak var nextDecorButton: UIButton!
+    
     var onboardIndex: Int = 0
     
     
@@ -202,7 +204,7 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         default:
             if self.isRelocalizing && !self.worldHasLoaded {
                 self.worldHasLoaded = true
-                enterMainScene()
+//                enterMainScene()
             }
         }
     }
@@ -375,6 +377,7 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         gardenCreatorInput.layer.cornerRadius = 15
         gardenCreatorInput.delegate = self
         gardenCreatorView.isHidden = true
+        nextDecorButton.isHidden = true
     }
     
     func enterMainScene() {
@@ -526,6 +529,9 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     @IBOutlet weak var gardenCreatorSubhead: UILabel!
     @IBOutlet weak var gardenCreatorHeadline: UILabel!
     
+    var currDecorIndex:Int = 0
+    var availableObjects:[String] = ["wateringcan", "guitar", "chair", "tulip"]
+    
     func onboardUser() {
         gardenCreatorView.isHidden = false
     }
@@ -555,12 +561,10 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
             gardenAnchor.setPosition(SIMD3<Float>(0,0,0), relativeTo: cameraAnchor)
             
             gardenAnchor.addChild(fence)
-            gardenAnchor.setPosition(SIMD3<Float>(0,0,0), relativeTo: gardenAnchor)
+            
             gardenAnchor.generateCollisionShapes(recursive: true)
             
             arView.scene.addAnchor(gardenAnchor.anchor!)
-            
-            
             
             
             gardenCreatorIcon.image = UIImage(named: "GardenFenceIcon")
@@ -578,11 +582,26 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
             gardenCreatorInput.isHidden = false
             gardenCreatorButton2.isHidden = true
             
+            arView.scene.removeAnchor(gardenAnchor.anchor!)
+            gardenAnchor.anchor!.removeFromParent()
+            
             gardenCreatorIcon.image = UIImage(named: "GardenFenceIcon")
             gardenCreatorHeadline.text = "Create Garden Fence"
             gardenCreatorSubhead.text = "Let's create a boundary for your garden! First, find a spot to plant the fences and place your device there!"
             gardenCreatorInput.isHidden = true
             gardenCreatorButton.setTitle("Set Garden Ground", for: .normal)
+            break
+        case 3, 4:
+            onboardIndex+=1
+            
+            UIView.animate(withDuration: 1, animations: {
+                self.gardenCreatorView.alpha = 0.0
+            })
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.gardenCreatorView.isHidden = true
+                self.enterMainScene()
+            }
             break
         default:
             break
@@ -594,14 +613,44 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         case 2:
             onboardIndex+=1
             
-            UIView.animate(withDuration: 1, animations: {
-                self.gardenCreatorView.alpha = 0.0
-            })
+            gardenCreatorIcon.image = UIImage(named: "DecorationIcon.png")
+            gardenCreatorHeadline.text = "Add Decorations"
+            gardenCreatorSubhead.text = "Next, make your garden pretty! Add some decorations! (Note: You can edit them later.)"
+            gardenCreatorInput.isHidden = true
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.gardenCreatorView.isHidden = true
-                self.enterMainScene()
-            }
+            gardenCreatorButton2.isHidden = false
+            gardenCreatorButton2.setTitle("Add Decorations", for: .normal)
+            gardenCreatorButton.setTitle("Skip", for: .normal)
+            
+            break
+        case 3:
+            onboardIndex+=1
+            
+            gardenCreatorIcon.image = UIImage(named: "DecorationIcon.png")
+            gardenCreatorHeadline.text = "Add Decorations"
+            gardenCreatorSubhead.text = "Place your phone where you want to set your decoration!"
+            gardenCreatorInput.isHidden = true
+            
+            gardenCreatorButton2.isHidden = false
+            gardenCreatorButton2.setTitle("Add", for: .normal)
+            gardenCreatorButton.setTitle("Done", for: .normal)
+            
+            nextDecorButton.isHidden = false
+            break
+        case 4:
+            let plane = Decoration(color: .clear, position: Transform(matrix: self.cameraTransform).translation)
+            
+            let decor = try! Entity.loadModel(named: availableObjects[currentObjectIndex])
+                    
+            plane.setPosition(SIMD3<Float>(0,0,0), relativeTo: cameraAnchor)
+                    
+            plane.addChild(decor)
+            decor.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: plane)
+            
+            plane.setScale(SIMD3<Float>(0.25,0.25,0.25), relativeTo: plane)
+            plane.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(plane)
+            break
         default:
             break
         }
@@ -611,5 +660,14 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+    
+    
+    @IBAction func nextObject(_ sender: Any) {
+        currentObjectIndex+=1
+        
+        if currentObjectIndex >= availableObjects.count {
+            currentObjectIndex = 0
+        }
+    nextDecorButton.setTitle(availableObjects[currentObjectIndex], for: .normal)
+    }
 }
-

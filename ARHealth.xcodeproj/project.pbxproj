@@ -26,6 +26,11 @@
 		0164A7722673E244008DD833 /* squat version 1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A76E2673E244008DD833 /* squat version 1.usdz */; };
 		0164A7732673E244008DD833 /* run.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A76F2673E244008DD833 /* run.usdz */; };
 		0164A7742673E244008DD833 /* squat version 2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A7702673E244008DD833 /* squat version 2.usdz */; };
+		0164A7C126747678008DD833 /* DecorationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0164A7C026747678008DD833 /* DecorationIcon.png */; };
+		0164A7C72674845B008DD833 /* wateringcan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A7C32674845B008DD833 /* wateringcan.usdz */; };
+		0164A7C82674845B008DD833 /* guitar.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A7C42674845B008DD833 /* guitar.usdz */; };
+		0164A7C92674845B008DD833 /* chair.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A7C52674845B008DD833 /* chair.usdz */; };
+		0164A7CA2674845B008DD833 /* tulip.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0164A7C62674845B008DD833 /* tulip.usdz */; };
 		01651BC826571F9200FDA340 /* arhealthlandingbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 01651BC726571F9200FDA340 /* arhealthlandingbg.png */; };
 		01651BDD265720E500FDA340 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BCA265720E500FDA340 /* Montserrat-LightItalic.ttf */; };
 		01651BDE265720E500FDA340 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01651BCB265720E500FDA340 /* Montserrat-Medium.ttf */; };
@@ -117,6 +122,11 @@
 		0164A76E2673E244008DD833 /* squat version 1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "squat version 1.usdz"; sourceTree = "<group>"; };
 		0164A76F2673E244008DD833 /* run.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = run.usdz; sourceTree = "<group>"; };
 		0164A7702673E244008DD833 /* squat version 2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "squat version 2.usdz"; sourceTree = "<group>"; };
+		0164A7C026747678008DD833 /* DecorationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DecorationIcon.png; sourceTree = "<group>"; };
+		0164A7C32674845B008DD833 /* wateringcan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = wateringcan.usdz; sourceTree = "<group>"; };
+		0164A7C42674845B008DD833 /* guitar.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = guitar.usdz; sourceTree = "<group>"; };
+		0164A7C52674845B008DD833 /* chair.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair.usdz; sourceTree = "<group>"; };
+		0164A7C62674845B008DD833 /* tulip.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tulip.usdz; sourceTree = "<group>"; };
 		01651BC726571F9200FDA340 /* arhealthlandingbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arhealthlandingbg.png; path = ARHealth/Assets/arhealthlandingbg.png; sourceTree = SOURCE_ROOT; };
 		01651BCA265720E500FDA340 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		01651BCB265720E500FDA340 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -256,6 +266,17 @@
 			path = ARHealthUITests;
 			sourceTree = "<group>";
 		};
+		0164A7C22674845B008DD833 /* Decorations */ = {
+			isa = PBXGroup;
+			children = (
+				0164A7C32674845B008DD833 /* wateringcan.usdz */,
+				0164A7C42674845B008DD833 /* guitar.usdz */,
+				0164A7C52674845B008DD833 /* chair.usdz */,
+				0164A7C62674845B008DD833 /* tulip.usdz */,
+			);
+			path = Decorations;
+			sourceTree = "<group>";
+		};
 		01651BC9265720E500FDA340 /* Montserrat */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +344,8 @@
 		017FE60B2671943F00963042 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0164A7C22674845B008DD833 /* Decorations */,
+				0164A7C026747678008DD833 /* DecorationIcon.png */,
 				0164A7682673DC50008DD833 /* fencepost.usdz */,
 				0164A76D2673E244008DD833 /* fly.usdz */,
 				017FE69F26734D4300963042 /* GardenFenceIcon.png */,
@@ -463,6 +486,7 @@
 				01651BE5265720E500FDA340 /* Montserrat-MediumItalic.ttf in Resources */,
 				01651C0F2657315800FDA340 /* DragonLogo.png in Resources */,
 				01651BE0265720E500FDA340 /* Montserrat-Light.ttf in Resources */,
+				0164A7CA2674845B008DD833 /* tulip.usdz in Resources */,
 				01651BDF265720E500FDA340 /* Montserrat-BoldItalic.ttf in Resources */,
 				017FE6032671943200963042 /* Saira-Regular.ttf in Resources */,
 				01651BE7265720E500FDA340 /* Montserrat-SemiBold.ttf in Resources */,
@@ -484,7 +508,9 @@
 				017FE6012671943200963042 /* Saira-Medium.ttf in Resources */,
 				0164A7712673E244008DD833 /* fly.usdz in Resources */,
 				01651BC826571F9200FDA340 /* arhealthlandingbg.png in Resources */,
+				0164A7C82674845B008DD833 /* guitar.usdz in Resources */,
 				01651BFF26572EEB00FDA340 /* AppLogo152x152.png in Resources */,
+				0164A7C92674845B008DD833 /* chair.usdz in Resources */,
 				011F911F25E5DB1D00382FBC /* Assets.xcassets in Resources */,
 				01651BEB265720E500FDA340 /* Montserrat-Black.ttf in Resources */,
 				0164A7742673E244008DD833 /* squat version 2.usdz in Resources */,
@@ -498,6 +524,7 @@
 				01651C102657315800FDA340 /* CheckButton.png in Resources */,
 				017FE6062671943200963042 /* Saira-Black.ttf in Resources */,
 				0164A7732673E244008DD833 /* run.usdz in Resources */,
+				0164A7C72674845B008DD833 /* wateringcan.usdz in Resources */,
 				01651BE9265720E500FDA340 /* Montserrat-ExtraBold.ttf in Resources */,
 				01651C0926572EEB00FDA340 /* AppLogo87x87.png in Resources */,
 				01651BE8265720E500FDA340 /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -507,6 +534,7 @@
 				01651BE6265720E500FDA340 /* Montserrat-BlackItalic.ttf in Resources */,
 				01651C0226572EEB00FDA340 /* AppLogo180x180.png in Resources */,
 				01651BE3265720E500FDA340 /* Montserrat-Thin.ttf in Resources */,
+				0164A7C126747678008DD833 /* DecorationIcon.png in Resources */,
 				01651BDE265720E500FDA340 /* Montserrat-Medium.ttf in Resources */,
 				01651BE4265720E500FDA340 /* Montserrat-Bold.ttf in Resources */,
 				01651BE2265720E500FDA340 /* Montserrat-ExtraLight.ttf in Resources */,

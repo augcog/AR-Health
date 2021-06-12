@@ -15,11 +15,12 @@ class Decoration: Entity, HasModel, HasAnchoring, HasCollision {
     required init(color: UIColor) {
         super.init()
         self.components[ModelComponent] = ModelComponent(
-            mesh: .generateBox(size: 0.1),
-            materials: [SimpleMaterial(
-                color: color,
-                isMetallic: false)
-            ]
+//            mesh: .generateBox(size: 0.1),
+//            materials: [SimpleMaterial(
+//                color: color,
+//                isMetallic: false)
+//            ]
+            mesh: .generatePlane(width: 0.1, depth: 0.1), materials: [SimpleMaterial(color: .clear, isMetallic: false)]
         )
     }
     
