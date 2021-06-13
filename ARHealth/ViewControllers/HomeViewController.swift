@@ -10,12 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     var signedIn:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton.layer.cornerRadius = 25
+        signUpButton.layer.cornerRadius = 25
     }
     
     @IBAction func signIn(_ sender: Any) {

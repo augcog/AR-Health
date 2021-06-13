@@ -39,6 +39,8 @@ Requires Xcode 10.0, iOS 12.0 and an iOS device with A9 or later processor.
     2. There is a button with a label for a decoration (i.e. guitar). This is the current object in queue for you to place. Click this button to use other decoration objects
     3. If you want to place that decoration, click "Add"
     4. If you are satisfied for now with the decor, click "Done"
+    5. If you want to remove a decor, walk up to and place your phone on the object. A "remove" button will appear that, when pressed, will delete that decoration.
+6. In the main scene, you will see a button "Enter Decoration Mode" (which will allow to place and remove decorations)
 
 &nbsp;
 

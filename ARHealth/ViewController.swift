@@ -20,9 +20,9 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     @IBOutlet weak var sessionInfoLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var decorationModeButton: UIButton!
-    @IBOutlet weak var placeButton: UIButton!
     @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var placeBoundaryButton: UIButton!
+    @IBOutlet weak var buttonStackView: UIStackView!
     
     @IBOutlet weak var scanningView: UIView!
     @IBOutlet weak var loadingView: UIStackView!
@@ -33,9 +33,11 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     @IBOutlet weak var gardenCreatorInput: UITextField!
     @IBOutlet weak var gardenCreatorButton2: UIButton!
     @IBOutlet weak var nextDecorButton: UIButton!
+    @IBOutlet weak var removeDecorButton: UIButton!
     
     var onboardIndex: Int = 0
     
+    let playerEntity = Player(target: .camera)
     
     var virtualPetAnchors: [AnchorEntity] = []
     var defaultConfiguration: ARWorldTrackingConfiguration {
@@ -80,6 +82,10 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     var boundaryTimer = Timer()
     var originEntity: Entity = AnchorEntity(world: SIMD3<Float>(0,0,0))
     
+    
+    var decorationAnchors: [Decoration] = []
+    var decorToEdit: Decoration = Decoration()
+    
     // MARK: - View Life Cycle
     
     // Allows user to auto-rotate phone
@@ -90,6 +96,10 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     // View is loaded into memory
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.arView.scene.addAnchor(playerEntity)
+        self.playerEntity.addCollision(vc: self)
+        
         prepareMainScene()
         arView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
         placeBoundaryButton.setTitle("Set Ground", for: .normal)
@@ -169,6 +179,7 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
             
             if (frame.worldMappingStatus == .mapped && frame.camera.trackingState.description == "Normal") {
                 isScanningWorld = false
+                scanningView.isHidden = true
                 onboardUser()
             } else {
                 for index in 0...2 {
@@ -180,6 +191,9 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
             }
         }
         
+        if (frame.worldMappingStatus != .mapped || frame.camera.trackingState.description != "Normal") {
+            isScanningWorld = true
+        }
         statusLabel.text = """
         Mapping: \(frame.worldMappingStatus.description)
         Tracking: \(frame.camera.trackingState.description)
@@ -345,11 +359,12 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         self.worldHasBeenSaved = true
         self.arView.debugOptions = []
         self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-        self.decorationModeButton.isHidden = true
         
-        placeButton.isHidden = true
-        placeBoundaryButton.isHidden = true
+        
+        decorationModeButton.layer.cornerRadius = 15
         debugLabel.isHidden = false
+        
+        buttonStackView.isHidden = true
         sessionInfoView.isHidden = true
         
         scanningView.isHidden = true
@@ -378,6 +393,9 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         gardenCreatorInput.delegate = self
         gardenCreatorView.isHidden = true
         nextDecorButton.isHidden = true
+        
+        removeDecorButton.layer.cornerRadius = 17.5
+        removeDecorButton.isHidden = true
     }
     
     func enterMainScene() {
@@ -385,12 +403,13 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         self.worldHasBeenSaved = true
         self.arView.debugOptions = []
         self.sessionInfoLabel.text = "Welcome to \(self.worldName)! Decorate your space or play a minigame."
-        self.decorationModeButton.isHidden = true
+        
         
         scanningView.isHidden = true
         
-        placeButton.isHidden = false
-        placeBoundaryButton.isHidden = false
+        buttonStackView.isHidden = false
+        placeBoundaryButton.isHidden = true
+        
         debugLabel.isHidden = false
         sessionInfoView.isHidden = false
     }
@@ -413,6 +432,15 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
     
     @IBAction func enterDecorationMode(_ sender: UIButton) {
         isInDecorationMode = true
+        
+        buttonStackView.isHidden = true
+        
+        sessionInfoView.isHidden = true
+        
+        onboardIndex = 3
+        gardenCreatorView.isHidden = false
+        gardenCreatorView.alpha = 1.0
+        toggleGardenButton2(sender)
     }
     
     func runSession() {
@@ -594,6 +622,8 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         case 3, 4:
             onboardIndex+=1
             
+            isInDecorationMode = false
+            
             UIView.animate(withDuration: 1, animations: {
                 self.gardenCreatorView.alpha = 0.0
             })
@@ -626,6 +656,8 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
         case 3:
             onboardIndex+=1
             
+            isInDecorationMode = true
+            
             gardenCreatorIcon.image = UIImage(named: "DecorationIcon.png")
             gardenCreatorHeadline.text = "Add Decorations"
             gardenCreatorSubhead.text = "Place your phone where you want to set your decoration!"
@@ -648,6 +680,7 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
             decor.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: plane)
             
             plane.setScale(SIMD3<Float>(0.25,0.25,0.25), relativeTo: plane)
+            decor.generateCollisionShapes(recursive: true)
             plane.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(plane)
             break
@@ -669,5 +702,20 @@ class ViewController: UIViewController, ARSessionDelegate, UITextFieldDelegate {
             currentObjectIndex = 0
         }
     nextDecorButton.setTitle(availableObjects[currentObjectIndex], for: .normal)
+    }
+    
+    func showDecorOverlay(decor: Decoration) {
+        decorToEdit = decor
+        removeDecorButton.isHidden = false
+    }
+    
+    func hideDecorOverlay() {
+        removeDecorButton.isHidden = true
+    }
+    
+    @IBAction func removeDecor(_ sender: Any) {
+        arView.scene.removeAnchor(decorToEdit)
+        decorToEdit.removeFromParent()
+        hideDecorOverlay()
     }
 }

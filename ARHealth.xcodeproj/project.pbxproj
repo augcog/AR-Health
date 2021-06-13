@@ -80,6 +80,9 @@
 		017FE6A026734D4300963042 /* GardenFenceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FE69F26734D4300963042 /* GardenFenceIcon.png */; };
 		01D355BA26277F2E006B261E /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D355B926277F2E006B261E /* CustomBox.swift */; };
 		01D355BC2627818F006B261E /* Decoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D355BB2627818F006B261E /* Decoration.swift */; };
+		01DDB388267575FB00D154A1 /* PhotoUpload.png in Resources */ = {isa = PBXBuildFile; fileRef = 01DDB387267575FB00D154A1 /* PhotoUpload.png */; };
+		01DDB38A267577E100D154A1 /* Line 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 01DDB389267577E100D154A1 /* Line 1.png */; };
+		01DDB38C26757C3500D154A1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DDB38B26757C3500D154A1 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +181,9 @@
 		017FE69F26734D4300963042 /* GardenFenceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GardenFenceIcon.png; sourceTree = "<group>"; };
 		01D355B926277F2E006B261E /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
 		01D355BB2627818F006B261E /* Decoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoration.swift; sourceTree = "<group>"; };
+		01DDB387267575FB00D154A1 /* PhotoUpload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhotoUpload.png; sourceTree = "<group>"; };
+		01DDB389267577E100D154A1 /* Line 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line 1.png"; sourceTree = "<group>"; };
+		01DDB38B26757C3500D154A1 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +239,7 @@
 				017FE60B2671943F00963042 /* Assets */,
 				01B30A15265A17930070A722 /* ViewControllers */,
 				012999B125F88BE0001CB91B /* Utilities.swift */,
+				01DDB38B26757C3500D154A1 /* Player.swift */,
 				012999B325F88C19001CB91B /* SnapshotAnchor.swift */,
 				011F911525E5DB1C00382FBC /* AppDelegate.swift */,
 				011F911725E5DB1C00382FBC /* ViewController.swift */,
@@ -344,15 +351,14 @@
 		017FE60B2671943F00963042 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				01DDB38D26757D4800D154A1 /* DefaultDragon */,
 				0164A7C22674845B008DD833 /* Decorations */,
 				0164A7C026747678008DD833 /* DecorationIcon.png */,
+				01DDB387267575FB00D154A1 /* PhotoUpload.png */,
 				0164A7682673DC50008DD833 /* fencepost.usdz */,
-				0164A76D2673E244008DD833 /* fly.usdz */,
 				017FE69F26734D4300963042 /* GardenFenceIcon.png */,
 				01651BC726571F9200FDA340 /* arhealthlandingbg.png */,
-				0164A76F2673E244008DD833 /* run.usdz */,
-				0164A76E2673E244008DD833 /* squat version 1.usdz */,
-				0164A7702673E244008DD833 /* squat version 2.usdz */,
+				01DDB389267577E100D154A1 /* Line 1.png */,
 				01651C0D2657315800FDA340 /* CheckButton.png */,
 				01651C0C2657315800FDA340 /* DragonLogo.png */,
 				017FE60C2672FFFF00963042 /* DragonLogoBlack.png */,
@@ -370,6 +376,17 @@
 				01651C112657361600FDA340 /* OverlayControllers.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		01DDB38D26757D4800D154A1 /* DefaultDragon */ = {
+			isa = PBXGroup;
+			children = (
+				0164A76D2673E244008DD833 /* fly.usdz */,
+				0164A76F2673E244008DD833 /* run.usdz */,
+				0164A76E2673E244008DD833 /* squat version 1.usdz */,
+				0164A7702673E244008DD833 /* squat version 2.usdz */,
+			);
+			path = DefaultDragon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +504,7 @@
 				01651C0F2657315800FDA340 /* DragonLogo.png in Resources */,
 				01651BE0265720E500FDA340 /* Montserrat-Light.ttf in Resources */,
 				0164A7CA2674845B008DD833 /* tulip.usdz in Resources */,
+				01DDB388267575FB00D154A1 /* PhotoUpload.png in Resources */,
 				01651BDF265720E500FDA340 /* Montserrat-BoldItalic.ttf in Resources */,
 				017FE6032671943200963042 /* Saira-Regular.ttf in Resources */,
 				01651BE7265720E500FDA340 /* Montserrat-SemiBold.ttf in Resources */,
@@ -509,6 +527,7 @@
 				0164A7712673E244008DD833 /* fly.usdz in Resources */,
 				01651BC826571F9200FDA340 /* arhealthlandingbg.png in Resources */,
 				0164A7C82674845B008DD833 /* guitar.usdz in Resources */,
+				01DDB38A267577E100D154A1 /* Line 1.png in Resources */,
 				01651BFF26572EEB00FDA340 /* AppLogo152x152.png in Resources */,
 				0164A7C92674845B008DD833 /* chair.usdz in Resources */,
 				011F911F25E5DB1D00382FBC /* Assets.xcassets in Resources */,
@@ -575,6 +594,7 @@
 				01651C122657361600FDA340 /* OverlayControllers.swift in Sources */,
 				011F911625E5DB1C00382FBC /* AppDelegate.swift in Sources */,
 				0112FBEF2630C5B800E2E823 /* Plane.swift in Sources */,
+				01DDB38C26757C3500D154A1 /* Player.swift in Sources */,
 				012999B225F88BE0001CB91B /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
